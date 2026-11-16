@@ -1,104 +1,110 @@
-# Huella Serena — Refugio, Version 2
+<div align="center">
 
-Sistema web con **PHP 8.2+**, **MySQL 8/MariaDB**, **MVC modular**, **HTML**, **JavaScript** y **Tailwind CSS v4**. Incluye un diseño público editorial con fotografía protagonista, animaciones, adaptación móvil y un panel de administración con selector global de identidad visual.
+<img src="docs/assets/huella-serena-readme.svg" width="100%" alt="Huella Serena: un lugar seguro, un nuevo comienzo. Portada ilustrada con huella animada." />
 
-## Abrir con un clic en Windows
+<br/>
 
-En este equipo, abre **Huella Serena - Refugio** desde el escritorio o desde la carpeta del proyecto. También puedes hacer doble clic en **Iniciar Refugio.cmd**. No necesitas escribir el comando del servidor ni abrir la ventana de Laragon.
+**Cuidar también es crear oportunidades.** 🐾
 
-Para crear nuevamente los accesos con el icono de patita, abre **Crear acceso directo.cmd**. Si prefieres la terminal, el comando corto es `php start`.
+Una experiencia web para conectar **bienestar animal, adopciones responsables y ayuda comunitaria**.
 
-El iniciador usa PHP y la base MySQL que ya tienes instalados. Reutiliza el servidor de este proyecto si está abierto; si otro programa ocupa el puerto 8000, busca uno libre hasta el 8010. Abre la página únicamente cuando la conexión a la base responde. Cerrar la pestaña conserva el servidor disponible para volver a entrar.
+<br/>
 
-La primera ejecución con MySQL activo recuerda exclusivamente su carpeta, versión y puerto en `storage/framework/launcher/`, excluido de Git. Los siguientes arranques pueden iniciar esa misma instalación MySQL 8 sin abrir Laragon. No crea tablas, no importa datos y no copia contraseñas. Si cambias la instalación, abre tu MySQL habitual una vez para actualizar la referencia. El arranque automático de MySQL se limita a conexiones locales y escucha en `127.0.0.1`.
+<a href="https://github.com/Developer-vic1/Refugio/commits/develop"><img alt="Último commit de develop" src="https://img.shields.io/github/last-commit/Developer-vic1/Refugio/develop?style=flat-square&label=Actualizado&color=17463D" /></a>
+<a href="https://github.com/Developer-vic1/Refugio/issues"><img alt="Issues abiertos" src="https://img.shields.io/github/issues/Developer-vic1/Refugio?style=flat-square&label=Issues&color=BD7554" /></a>
+<a href="https://github.com/Developer-vic1/Refugio/stargazers"><img alt="Estrellas del repositorio" src="https://img.shields.io/github/stars/Developer-vic1/Refugio?style=flat-square&label=Estrellas&color=17463D" /></a>
 
-En otro equipo debes instalar PHP 8.2+ con las extensiones indicadas, ejecutar `composer install`, disponer de la base existente y configurar tu propio `.env`. El acceso directo se vuelve a crear allí; no contiene una base portátil. Los errores se muestran en una ventana breve y los registros quedan en `storage/logs/`, fuera del repositorio.
+<br/>
 
-## 1. Instalación en Laragon (Windows)
+<a href="#-descubre-huella-serena">Descubrir</a> ·
+<a href="#-arranque-rápido">Instalar</a> ·
+<a href="docs/RUTAS_Y_MODULOS.md">Rutas</a> ·
+<a href="docs/progress/EJECUCION_V2.md">Progreso</a> ·
+<a href="https://github.com/Developer-vic1/Refugio/issues">Participar</a>
 
-1. Extrae todo el proyecto en `C:\laragon\www\refugio`.
-2. En MySQL Workbench comprueba que exista la base **`refugio` con sus 22 tablas y 3 vistas**. El proyecto no crea tablas ni modifica su esquema.
-3. Copia `.env.example` a `.env` y ajusta `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT` y `DB_NAME`. El usuario `root` con contraseña vacía solo es un valor inicial frecuente en **desarrollo local**; para producción utiliza una cuenta MySQL de privilegios mínimos.
-4. **Configura Apache para que el DocumentRoot del sitio sea `C:/laragon/www/refugio/public`.** Hay un ejemplo en `laragon/refugio.test.conf`. Si Laragon genera `auto.refugio.test.conf`, sustituye ese sitio automático por uno manual, no mantengas dos VirtualHosts con el mismo nombre. Reinicia o recarga Apache y comprueba `http://refugio.test`.
-5. En la terminal de Laragon, desde la raíz del proyecto, ejecuta `npm install` y `npm run build` para compilar Tailwind. Las hojas CSS y JS centrales ya están copiadas en `public/assets`, por lo que la apariencia base funciona incluso antes de ejecutar npm.
-6. Verifica `http://refugio.test/`, `http://refugio.test/animales` y `http://refugio.test/admin/login`.
+</div>
 
-> Nunca configures el DocumentRoot hacia la **raíz** del proyecto: allí está `.env`, el código PHP y los archivos privados. Laragon ofrece hosts `.test` automáticos, pero para este proyecto el host debe apuntar expresamente a `public/`.
+---
 
-### Configuración recomendada de PHP
+## 🌿 Descubre Huella Serena
 
-Comprueba que estén habilitadas las extensiones `pdo_mysql`, `fileinfo` y `openssl` (y, de ser posible, `mbstring`). Para imágenes de hasta 5 MB configura `upload_max_filesize=6M` y `post_max_size=8M` o valores superiores. Para errores de permisos en imágenes, comprueba escritura sobre `storage/app/public/animales`, `storage/app/public/historias` y `storage/app/private`.
+**Huella Serena** es una iniciativa en formación y una plataforma web para presentar animales, compartir historias y coordinar solicitudes de adopción, aportes y voluntariado. Un panel privado organiza su gestión.
 
-## 2. Tema, CSS y animaciones
+| 🐶 **Explora** | 💚 **Colabora** | 🛡️ **Gestiona** |
+| :---: | :---: | :---: |
+| Catálogo, fichas e historias | Campañas, donaciones y voluntariado | Animales, solicitudes y publicaciones |
+| [Ver rutas públicas](docs/RUTAS_Y_MODULOS.md) | [Ver módulos](docs/RUTAS_Y_MODULOS.md) | [Ver arquitectura](docs/ARQUITECTURA.md) |
 
-**Editar únicamente las fuentes centrales:**
+<div align="center">
 
-- `resources/css/app.css`: paleta, sombras, tipografía, tamaños, responsive, componentes y efectos.
-- `resources/js/app.js`: menú, revelado por scroll, progreso de lectura, cursor ambiental, tarjetas con inclinación, previsualización de imágenes y confirmaciones accesibles.
-- `resources/css/tailwind-input.css`: fuente de Tailwind v4 (procesa las clases de vistas PHP y JavaScript).
+<img src="https://img.shields.io/badge/PHP-8.2%2B-17463D?style=flat-square&logo=php&logoColor=white" alt="PHP 8.2 o superior"/>
+<img src="https://img.shields.io/badge/MySQL-8%20%2F%20MariaDB-17463D?style=flat-square&logo=mysql&logoColor=white" alt="MySQL o MariaDB"/>
+<img src="https://img.shields.io/badge/Tailwind-v4-17463D?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind CSS 4"/>
+<img src="https://img.shields.io/badge/Arquitectura-MVC-D39A55?style=flat-square" alt="Arquitectura MVC"/>
+<img src="https://img.shields.io/badge/Entorno-Laragon-D39A55?style=flat-square" alt="Laragon"/>
 
-Tras cambiar las fuentes ejecuta `npm run build` o `npm run assets:sync` si solo editaste CSS/JS personalizados. Evita editar `public/assets/css/app.css` y `public/assets/js/app.js`, ya que son copias generadas.
+</div>
 
-**El administrador puede cambiar entre tres identidades** en `/admin/tema`: Bosque y Hogar, Atardecer Solidario y Lila Esperanza, y seleccionar movimiento sereno, equilibrado o expresivo. Se guarda en `storage/app/private/visual-settings.json`, sin modificar las 22 tablas. Siempre se respeta `prefers-reduced-motion`.
+<details>
+<summary><strong>🎨 Ver el estilo visual del proyecto</strong></summary>
 
-## 3. Acceso y publicación
+<br/>
+<div align="center">
+  <img src="public/assets/img/inicio-paseo-v2.webp" width="800" alt="Ilustración editorial del inicio de Huella Serena: un perro paseando por el campo." />
+  <p><sub>Imagen editorial generada para el diseño; no documenta un rescate real.</sub></p>
+</div>
 
-- Sitio público: `/`.
-- Panel: `/admin/login` y `/admin`.
-- Contraseñas: lectura de los hashes PBKDF2-HMAC-SHA256 con el formato `pbkdf2_sha256$...` de `administradores.contrasena_hash`. **El proyecto no incluye contraseñas en texto plano ni crea cuentas.** Usa las cuentas que ya incorporaste en MySQL; cambia las contraseñas iniciales débiles antes de publicar.
-- `PUBLIC_CONTENT_ENABLED=false` evita mostrar como hechos reales los registros generados anteriormente para desarrollo.
-- `PUBLIC_FORMS_ENABLED=false` bloquea la recepción pública de formularios hasta terminar la revisión de privacidad, antispam y flujo de atención.
-- Las campañas solo aparecen si están activas; las historias deben tener `publicada=1`; los aportes quedan `pendiente` hasta su conciliación.
+Diseño **Bosque y Hogar**, paleta cálida, animaciones accesibles, transiciones y modo de movimiento reducido. [Explorar el motor visual](docs/modules/MOTION_ENGINE.md).
 
-Los recursos `hero-rescate.webp` y `hero-compania.webp` son **fotografías ilustrativas generadas para la interfaz**. No deben presentarse como expedientes o fotografías auténticas de animales del refugio.
+</details>
 
-## 4. Subida de fotografías y almacenamiento
+## ⚡ Arranque rápido
 
-Las fotografías que incorpora el administrador se guardan en:
+<details open>
+<summary><strong>🖥️ Laragon · Windows</strong></summary>
 
-- `storage/app/public/animales/`
-- `storage/app/public/historias/`
+1. Instala PHP **8.2+**, Composer, Node.js y MySQL; prepara la base existente **<code>refugio</code>** (22 tablas y 3 vistas).
+2. Copia <code>.env.example</code> como <code>.env</code> y configura la conexión local.
+3. En la carpeta del proyecto, ejecuta:
 
-**No** se suben directamente a `public/`. El frontend recibe rutas `/media/{categoria}/{archivo}` servidas por `MediaController`; antes de entregar una imagen se comprueba la sesión administrativa o su disponibilidad pública real. Se admiten JPG/PNG/WEBP de hasta 5 MB, con validación MIME, dimensiones y nombres aleatorios de 128 bits. Los comprobantes sensibles deben mantenerse en `storage/app/private/`, con controlador autenticado específico cuando implementemos esa fase.
+   \`\`\`powershell
+   composer install
+   npm install
+   npm run build
+   php start
+   \`\`\`
 
-## 5. Qué funciona ya en esta versión
+También puedes abrir **<code>Iniciar Refugio.cmd</code>** en Windows. Si utilizas Apache de Laragon, apunta el VirtualHost a <code>public/</code>, nunca a la raíz.
 
-- Front Controller `public/index.php`, Router por método HTTP y rutas limpias; vistas PHP y layouts diferenciados.
-- Portada responsiva, CTA, catálogo y ficha pública, historias, campañas, voluntariado, transparencia y formularios principales.
-- Autenticación administrativa, limitación básica de intentos, sesiones seguras y cierre de sesión.
-- Dashboard administrativo, listados y búsqueda visual por tabla.
-- Registro, edición, archivado y subida de fotos de animales.
-- Registro, edición, verificación previa a publicación y fotografías de historias.
-- Registro y edición de campañas; activación tras una confirmación administrativa explícita.
-- Alta de actividades de voluntariado, revisión de postulaciones con bloqueo y control de cupos.
-- Gestión de estados de solicitudes de adopción (no formaliza la entrega), y confirmación o rechazo de aportes tras marcar conciliación.
-- Configuración institucional, de contacto y bancos; selección de tema global; auditoría básica de operaciones.
-- Protección CSRF para POST, PDO con parámetros, escape de salida HTML, sesiones HttpOnly, validaciones y cabeceras HTTP de seguridad.
+</details>
 
-## 6. Pendiente antes de considerar el sistema final o publicarlo
+<details>
+<summary><strong>🧩 ¿Cómo está organizado?</strong></summary>
 
-Esta es una **primera versión integrada**, no un sistema listo para producción. Falta completar y validar en Laragon: formalización y seguimiento de adopciones; kardex de inventario con comprobantes; alta, revisión y conciliación de gastos; informes financieros publicables; archivos y evidencias privadas; permisos granulares para las diez cuentas; sistema de notificaciones por correo; formulario de contacto con persistencia; anti-spam y controles perimetrales; pruebas automatizadas de integración y aceptación; copias de seguridad, privacidad institucional y revisión de datos reales.
+\`\`\`text
+public/index.php → Router → Controller → Service/Repository → MySQL
+                                ↓
+                       Vista PHP + Tailwind + JS
+\`\`\`
 
-La conexión local, el catálogo y los flujos públicos de preparación se han revisado durante V2. La aceptación integral de operaciones administrativas y datos reales permanece pendiente antes de habilitar acceso público de producción. Consulta `docs/progress/EJECUCION_V2.md`.
+**Código:** <code>app/</code> · **Rutas:** <code>routes/</code> · **Estilos y movimiento:** <code>resources/</code> · **Archivos protegidos:** <code>storage/</code>.
 
-## 7. Comprobaciones rápidas
+[Arquitectura y carpetas](docs/ARQUITECTURA.md) · [Seguridad](docs/SEGURIDAD_Y_PUBLICACION.md)
 
-- `php -l public/index.php` valida la sintaxis de un archivo.
-- `php -S 127.0.0.1:8000 -t public public/dev-router.php` ejecuta una prueba de desarrollo alternativa a Laragon.
-- `php start` abre el proyecto con el iniciador de Windows; `php start --no-browser` comprueba el arranque sin abrir una pestaña.
-- `powershell -ExecutionPolicy Bypass -File scripts/comprobar-rutas.ps1 -BaseUrl http://refugio.test` revisa las rutas HTTP esenciales.
-- `npm run build` compila Tailwind y sincroniza los recursos centrales.
+</details>
 
-Consulta además `docs/RUTAS_Y_MODULOS.md` y `docs/SEGURIDAD_Y_PUBLICACION.md`.
+## 🌱 Estado del proyecto
 
-## Fundamentos V2 en revisión
+**V2 en consolidación.** El portal público, los componentes visuales y varias operaciones administrativas ya están implementados. **Aún no está listo para producción**: faltan procesos completos de adopción, inventario, finanzas, permisos y pruebas integrales.
 
-La estructura modular de CSS, JavaScript, layouts y componentes está descrita en
-`docs/modules/UI_FOUNDATION.md`. La línea base publicada y sus 81 archivos se
-detallan en `docs/progress/BASELINE_V1.md`. Los módulos V2 se revisan mediante PR
-hacia `develop`; su publicación no implica aprobación ni integración.
+Los animales, cifras y comprobantes deben verificarse antes de publicarse como información real.
 
-Ejecuta `php scripts/check-ui.php` para comprobar los contratos de componentes.
-`npm run build` genera el CSS a partir de sus imports y sincroniza todos los módulos
-JavaScript. Las entradas centrales siguen siendo `resources/css/app.css` y
-`resources/js/app.js`.
+🔀 **GitFlow:** <code>feature/*</code> → <code>develop</code> → <code>main</code> tras revisión.
+
+<div align="center">
+  <a href="docs/progress/EJECUCION_V2.md"><strong>Ver avance de V2</strong></a> ·
+  <a href="https://github.com/Developer-vic1/Refugio/pulls"><strong>Pull requests</strong></a> ·
+  <a href="https://github.com/Developer-vic1/Refugio/issues/new"><strong>Proponer una mejora</strong></a>
+
+  <p><sub>Desarrollado con propósito por <a href="https://github.com/Developer-vic1">@Developer-vic1</a> · 🐾 Cada huella importa.</sub></p>
+</div>
