@@ -21,3 +21,6 @@
 @import './layouts/admin-workspace.css';
 @import './components/controls-signature.css';
 @import './animations/motion-system.css';
+@import './pages/home-v2.css';
+@import './pages/institutional.css';
+@import './components/paw-cursor.css';

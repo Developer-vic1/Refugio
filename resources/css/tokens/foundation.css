@@ -31,4 +31,6 @@
     --sidebar-hover: rgba(255,255,255,.1);
     --sidebar-border: rgba(255,255,255,.16);
     --sidebar-overlay: rgba(18,35,28,.55);
+    --immersive-shade: linear-gradient(90deg,color-mix(in srgb,var(--forest) 94%,transparent) 0%,color-mix(in srgb,var(--forest) 82%,transparent) 31%,color-mix(in srgb,var(--forest) 28%,transparent) 59%,transparent 83%);
+    --hero-button-glass: rgba(255,249,242,.08);
 }

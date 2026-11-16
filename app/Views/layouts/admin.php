@@ -4,7 +4,7 @@ $navGroups = \App\Support\AdminNavigation::groups();
 ?>
 <div class="admin-shell" data-admin-shell>
     <aside class="admin-sidebar" id="admin-sidebar" aria-label="Secciones administrativas" tabindex="-1">
-        <div class="admin-brand-row"><a class="brand admin-brand" href="/admin"><span class="brand-icon" aria-hidden="true"><?= icon('paw') ?></span><span class="sidebar-label">Refugio <b>Vida Animal</b><small>Espacio de cuidado</small></span></a><button type="button" class="icon-button admin-sidebar-close" data-admin-close aria-label="Cerrar panel lateral"><?= icon('close') ?></button></div>
+        <div class="admin-brand-row"><a class="brand admin-brand" href="/admin"><span class="brand-icon" aria-hidden="true"><?= icon('paw') ?></span><span class="sidebar-label"><?= e(\App\Services\SiteIdentity::brandParts()[0]) ?> <b><?= e(\App\Services\SiteIdentity::brandParts()[1]) ?></b><small>Espacio de cuidado</small></span></a><button type="button" class="icon-button admin-sidebar-close" data-admin-close aria-label="Cerrar panel lateral"><?= icon('close') ?></button></div>
         <div class="admin-nav-search"><label for="admin-nav-search" class="sr-only">Buscar un módulo</label><?= icon('search') ?><input id="admin-nav-search" type="search" placeholder="Buscar un módulo…" data-nav-search autocomplete="off"></div>
         <nav class="admin-menu" aria-label="Navegación administrativa">
             <?php foreach ($navGroups as $group=>$links): $hasActive = false; foreach ($links as $link) if (nav_active($link['href'])) $hasActive = true; ?>
