@@ -28,7 +28,12 @@ function e(mixed $value): string { return htmlspecialchars((string)($value ?? ''
 function url(string $path = ''): string { return '/' . ltrim($path, '/'); }
 function asset(?string $dbPath): string {
     $path = (string)$dbPath;
-    if (preg_match('~^(animales|historias|refugio)/([a-f0-9]{32}\.(?:jpg|png|webp))$~D', $path,$m)) return '/media/'.$m[1].'/'.$m[2];
+    if (preg_match('~^(animales|historias|refugio)/([a-f0-9]{32}\.(?:jpg|png|webp))$~D', $path,$m)) {
+        $stored = is_file(BASE_PATH.'/storage/app/public/'.$path);
+        $art = $m[1] === 'animales' && str_ends_with($m[2], '.webp') && is_file(BASE_PATH.'/public/assets/img/companions-art/'.$m[2]);
+        if ($stored || $art) return '/media/'.$m[1].'/'.$m[2];
+    }
+    if (\App\Services\ContentVisibility::localReview() && ($filename = \App\Services\ReviewMedia::filename($path)) && is_file(BASE_PATH.'/storage/app/review/animales/'.$filename)) return '/revision/animales/'.$filename;
     return '/assets/img/placeholder.svg';
 }
 function redirect(string $path, int $code = 303): never {
@@ -56,7 +61,7 @@ function take_flash(): ?array {
 }
 function get_flash(): ?string { return take_flash()['message'] ?? null; }
 function component(string $name, array $props = []): string {
-    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog', 'select-field', 'date-field', 'search-field', 'reset-filters', 'motion-preferences', 'care-moment'], true)) {
+    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog', 'select-field', 'date-field', 'search-field', 'reset-filters', 'motion-preferences', 'care-moment', 'animal-card', 'pagination', 'media-gallery'], true)) {
         throw new InvalidArgumentException('Componente desconocido');
     }
     ob_start();

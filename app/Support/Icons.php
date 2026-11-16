@@ -32,6 +32,8 @@ final class Icons
             'history' => '<path d="M3 11a9 9 0 1 1 2 7M3 4v7h7m2-5v6l4 2"/>',
             'arrow-up-right' => '<path d="M7 17 17 7H7m10 0v10"/>',
             'arrow-left' => '<path d="m12 5-7 7 7 7M5 12h15"/>',
+            'arrow-right' => '<path d="m12 5 7 7-7 7M19 12H4"/>',
+            'expand' => '<path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6"/>',
             'menu' => '<path d="M4 6h16M4 12h16M4 18h16"/>',
             'close' => '<path d="m6 6 12 12M6 18 18 6"/>',
             'lock' => '<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/>',

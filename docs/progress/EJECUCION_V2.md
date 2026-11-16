@@ -7,8 +7,9 @@ El usuario autorizó continuar y tratar los módulos como aprobados tras su veri
 3. Admin shell: `5e6bd5f`, PR #2 integrado como `29b0bb8`.
 4. UI controls: `0819499`, PR #3 integrado como `5e52732`.
 5. Motion engine: `d21b7c7`, PR #4 integrado como `845e018`.
-6. Public home: inicio inmersivo, identidad, Nosotros, Contacto y Privacidad implementados; revisión responsive y publicación en curso.
-7. Public animals, public adoptions, donations/campaigns, stories/volunteers, admin animals/media, workflows, finance/inventory, theme/settings y security/quality: pendientes en el orden del prompt.
+6. Public home: fcfd1e6, PR #5 integrado como 58e3675. Incluye inicio inmersivo, identidad, Nosotros, Contacto y Privacidad.
+7. Public animals: filtros SQL, paginación, revisión local y galería implementados; verificación y publicación en curso.
+8. Public adoptions, donations/campaigns, stories/volunteers, admin animals/media, workflows, finance/inventory, theme/settings y security/quality: pendientes en el orden del prompt.
 
 No se reemplaza MVC ni se crean roles o estadísticas ficticias. Las ampliaciones visuales inmediatas solicitadas en el catálogo se incluyeron en UI foundation; su backend de filtros y paginación aún se debe completar en public animals.
 
