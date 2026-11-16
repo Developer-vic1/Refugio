@@ -5,8 +5,9 @@ El usuario autorizó continuar y tratar los módulos como aprobados tras su veri
 1. Línea base V1: `f984099`, publicada en develop.
 2. UI foundation: `0b50470`, PR #1 integrado como `02f18b7`.
 3. Admin shell: `5e6bd5f`, PR #2 integrado como `29b0bb8`.
-4. UI controls: implementado y verificado; publicación en curso.
-5. Motion engine, public home, public animals, public adoptions, donations/campaigns, stories/volunteers, admin animals/media, workflows, finance/inventory, theme/settings y security/quality: pendientes en el orden del prompt.
+4. UI controls: `0819499`, PR #3 integrado como `5e52732`.
+5. Motion engine: implementado y verificado; publicación en curso.
+6. Public home, public animals, public adoptions, donations/campaigns, stories/volunteers, admin animals/media, workflows, finance/inventory, theme/settings y security/quality: pendientes en el orden del prompt.
 
 No se reemplaza MVC ni se crean roles o estadísticas ficticias. Las ampliaciones visuales inmediatas solicitadas en el catálogo se incluyeron en UI foundation; su backend de filtros y paginación aún se debe completar en public animals.
 

@@ -28,7 +28,7 @@
     </form>
     <?php if (!$animals): ?>
         <div class="catalogue-empty" data-sequence>
-            <figure class="catalogue-illustration"><img src="/assets/img/companeros-ilustracion-v2.png" width="1024" height="1024" alt="Ilustración original de un perro y un gato juntos"><figcaption>Ilustración · no representa animales registrados</figcaption></figure>
+            <figure class="catalogue-illustration" data-depth-scene><img data-depth-layer src="/assets/img/companeros-ilustracion-v2.png" width="1024" height="1024" alt="Ilustración original de un perro y un gato juntos"><figcaption>Ilustración · no representa animales registrados</figcaption></figure>
             <div class="catalogue-empty-copy">
                 <span class="micro-label"><?= icon('paw') ?> LOS BUENOS ENCUENTROS LLEGAN</span>
                 <h2><?= $query !== '' || $species !== '' ? 'Probemos con otra búsqueda.' : 'Una historia bonita también necesita su momento.' ?></h2>
