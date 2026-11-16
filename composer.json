@@ -1,0 +1,12 @@
+{
+  "name": "refugio/huella-serena",
+  "description": "Sitio MVC de Huella Serena y documentos de preparación",
+  "type": "project",
+  "require": {
+    "php": ">=8.2",
+    "ext-dom": "*",
+    "ext-mbstring": "*",
+    "ext-gd": "*",
+    "dompdf/dompdf": "^3.1"
+  }
+}

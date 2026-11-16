@@ -13,4 +13,5 @@ import './interactions/cursor.js';
 import './pages/legacy.js';
 import './pages/institutional.js';
 import './components/media-gallery.js';
+import './pages/adoption.js';
 document.documentElement.classList.remove('no-js');
