@@ -813,3 +813,40 @@ input[aria-invalid=true], textarea[aria-invalid=true], select[aria-invalid=true]
 }
 @media (prefers-reduced-motion: reduce) { .btn-reset:hover .icon { transform: none; } }
 @media (forced-colors: active) { .refugio-options .is-active,.refugio-calendar td button.selected { outline: 2px solid CanvasText; } }
+
+[data-depth-scene] { perspective: 1000px; }
+[data-depth-layer] { transition: rotate 400ms var(--ease-standard),translate 400ms var(--ease-standard); transform-origin: center; }
+.hero-photo { animation: none; transform: none; }
+[data-magnetic] { transition: translate 180ms var(--ease-standard),transform var(--duration-normal),background var(--duration-normal); }
+.motion-preferences { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; width: min(1320px,calc(100% - 72px)); margin: 38px auto 0; padding-top: 24px; border-top: 1px solid var(--sidebar-border); font-size: 11px; color: var(--sidebar-ink); }
+.motion-preferences > span { font: 600 18px var(--font-heading); margin-right: auto; }
+.motion-preferences label { display: flex; align-items: center; gap: 9px; cursor: pointer; min-height: 36px; }
+.motion-preferences input[type=checkbox] { appearance: none; width: 32px; height: 20px; border-radius: 12px; border: 1px solid var(--sidebar-muted); background: transparent; margin: 0; cursor: pointer; position: relative; flex-shrink: 0; }
+.motion-preferences input[type=checkbox]::before { content: ''; position: absolute; width: 12px; height: 12px; top: 3px; left: 3px; border-radius: 50%; background: var(--sidebar-ink); transition: translate var(--duration-fast); }
+.motion-preferences input[type=checkbox]:checked { background: var(--sage); border-color: var(--sage); }
+.motion-preferences input[type=checkbox]:checked::before { translate: 12px 0; background: var(--forest); }
+.motion-preferences input[type=checkbox]:disabled { opacity: .5; cursor: not-allowed; }
+.motion-preferences input:focus-visible { outline-color: var(--honey); }
+.motion-preferences small { flex-basis: 100%; color: var(--sidebar-muted); }
+.context-cursor { position: fixed; inset: 0 auto auto 0; width: 24px; height: 24px; z-index: 119; pointer-events: none; border: 1px solid var(--forest); border-radius: 50%; background: var(--glass); color: var(--forest); display: grid; place-items: center; font: 800 9px var(--font-body); transition: width 160ms,height 160ms,scale 100ms; }
+.context-cursor[data-state]:not([data-state=normal]) { width: 52px; height: 52px; background: var(--forest); color: var(--paper); }
+.context-cursor.is-pressed { scale: .82; }
+.has-context-cursor,.has-context-cursor a,.has-context-cursor button { cursor: none; }
+.has-context-cursor input,.has-context-cursor textarea { cursor: text; }
+.confirm-dialog,.refugio-calendar { animation: dialog-arrive 180ms var(--ease-standard); }
+@keyframes dialog-arrive { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+@media (max-width: 760px) {
+    .motion-preferences { width: calc(100% - 36px); gap: 12px 20px; }
+    .motion-preferences > span { flex-basis: 100%; }
+}
+html[data-user-motion=reduced] { scroll-behavior: auto; }
+html[data-user-motion=reduced] *,html[data-user-motion=reduced] *::before,html[data-user-motion=reduced] *::after { animation: none !important; transition-duration: .01ms !important; }
+html[data-user-motion=reduced] [data-depth-layer],html[data-user-motion=reduced] [data-magnetic] { rotate: none !important; translate: none !important; }
+html[data-user-motion=reduced] .btn:hover,html[data-user-motion=reduced] .action-card:hover,html[data-user-motion=reduced] .pet-card:hover,html[data-user-motion=reduced] .theme-choice:hover,html[data-user-motion=reduced] .quick-grid>a:hover { transform: none !important; }
+html[data-user-motion=reduced] .scroll-progress,html[data-user-motion=reduced] .context-cursor { display: none !important; }
+html[data-user-motion=reduced]::view-transition-old(root),html[data-user-motion=reduced]::view-transition-new(root) { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+    [data-depth-layer],[data-magnetic] { rotate: none !important; translate: none !important; }
+    .btn:hover,.action-card:hover,.pet-card:hover,.theme-choice:hover,.quick-grid>a:hover { transform: none !important; }
+    .scroll-progress,.context-cursor { display: none !important; }
+}
