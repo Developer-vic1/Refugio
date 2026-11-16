@@ -62,7 +62,7 @@ function take_flash(): ?array {
 }
 function get_flash(): ?string { return take_flash()['message'] ?? null; }
 function component(string $name, array $props = []): string {
-    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog', 'select-field', 'date-field', 'search-field', 'reset-filters', 'motion-preferences', 'care-moment', 'animal-card', 'pagination', 'media-gallery'], true)) {
+    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog', 'select-field', 'date-field', 'search-field', 'reset-filters', 'motion-preferences', 'care-moment', 'animal-card', 'pagination', 'media-gallery', 'coordination-form'], true)) {
         throw new InvalidArgumentException('Componente desconocido');
     }
     ob_start();
