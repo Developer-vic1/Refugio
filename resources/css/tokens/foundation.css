@@ -25,4 +25,10 @@
     --color-focus: var(--forest);
     --color-control-border: #7e8e86;
     --z-feedback: 120;
+    --admin-surface: #f3f5f0;
+    --sidebar-ink: #eff5ec;
+    --sidebar-muted: #c9dbce;
+    --sidebar-hover: rgba(255,255,255,.1);
+    --sidebar-border: rgba(255,255,255,.16);
+    --sidebar-overlay: rgba(18,35,28,.55);
 }

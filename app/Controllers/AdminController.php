@@ -23,14 +23,10 @@ final class AdminController {
         \redirect('/admin');
     }
     public function dashboard():void {
-        $db=Database::connection();
-        $sql=[
-            'Animales'=>'SELECT COUNT(*) FROM animales',
-            'Solicitudes de adopción pendientes'=>"SELECT COUNT(*) FROM solicitudes_adopcion WHERE estado='pendiente'",
-            'Aportes por verificar'=>"SELECT COUNT(*) FROM aportes WHERE estado='pendiente'",
-            'Voluntariado pendiente'=>"SELECT COUNT(*) FROM solicitudes_voluntariado WHERE estado='pendiente'",
-        ];$metrics=[];foreach($sql as $label=>$query)$metrics[$label]=(int)$db->query($query)->fetchColumn();
-        \page('admin/dashboard',['title'=>'Panel administrativo','metrics'=>$metrics]);
+        \page('admin/dashboard', ['title'=>'Panel principal','workspace'=>\App\Services\AdminWorkspace::dashboard()]);
+    }
+    public function pending():void {
+        \page('admin/pending', ['title'=>'Pendientes','workspace'=>\App\Services\AdminWorkspace::dashboard()]);
     }
     public function listing(string $key):void {
         $allowed=[
