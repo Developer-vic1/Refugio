@@ -1,0 +1,9 @@
+.site-footer{background:var(--ink);color:#fff;padding:60px 0 22px}
+.footer-inner{display:grid;grid-template-columns:2.5fr repeat(3,1fr);gap:45px}
+.footer-brand{color:#fff}
+.footer-brand b{color:#fff}
+.footer-inner h3{color:var(--sage);font:800 14px Manrope;margin-bottom:20px}
+.footer-inner a:not(.brand){display:block;font-size:13px;margin:12px 0;color:#e5e8e1}
+.footer-inner a:hover{text-decoration:underline}
+.footer-inner p{color:#abb9b0;font-size:13px}
+.footer-note{border-top:1px solid rgba(255,255,255,.15);margin-top:50px;padding-top:20px;font-size:11px;color:#c4d0c9}

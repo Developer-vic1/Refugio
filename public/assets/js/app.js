@@ -1,24 +1,6 @@
-/* Comportamientos globales. No se configuran colores ni animaciones en páginas PHP. */
-(()=>{'use strict';
-const root=document.documentElement;
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const menu=document.querySelector('[data-menu]');const publicNav=document.getElementById('public-nav');
-menu?.addEventListener('click',()=>{const open=publicNav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');});
-publicNav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{publicNav.classList.remove('open');menu?.setAttribute('aria-expanded','false');}));
-document.querySelector('[data-admin-menu]')?.addEventListener('click',event=>{const nav=document.getElementById('admin-sidebar');const open=nav?.classList.toggle('open');event.currentTarget.setAttribute('aria-expanded',String(!!open));});
-const reveals=document.querySelectorAll('.reveal');if('IntersectionObserver' in window && !reduced){const observer=new IntersectionObserver((entries,o)=>{for(const e of entries){if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target);}}},{threshold:.09,rootMargin:'0px 0px -30px 0px'});reveals.forEach(el=>observer.observe(el));}else reveals.forEach(el=>el.classList.add('visible'));
-const progress=document.querySelector('.scroll-progress');let scrollQueued=false;const updateScroll=()=>{if(progress){const d=document.documentElement;const max=d.scrollHeight-d.clientHeight;progress.style.width=(max?100*window.scrollY/max:0)+'%';}scrollQueued=false;};addEventListener('scroll',()=>{if(!scrollQueued){requestAnimationFrame(updateScroll);scrollQueued=true;}},{passive:true});updateScroll();
-if(!reduced && matchMedia('(pointer:fine)').matches){const glow=document.querySelector('.pointer-glow');let pos=[-1000,-1000],scheduled=false;document.addEventListener('pointermove',e=>{pos=[e.clientX,e.clientY];if(!scheduled){scheduled=true;requestAnimationFrame(()=>{if(glow){glow.style.left=pos[0]+'px';glow.style.top=pos[1]+'px';glow.style.opacity='.22';}scheduled=false;});}},{passive:true});document.addEventListener('pointerleave',()=>{if(glow)glow.style.opacity='0';});
- document.querySelectorAll('.tilt-card').forEach(card=>{card.addEventListener('pointermove',e=>{if(root.dataset.motion==='serena')return;const r=card.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(700px) rotateY(${x*2.5}deg) rotateX(${-y*2.5}deg) translateY(-3px)`;});card.addEventListener('pointerleave',()=>{card.style.transform='';});});
-}
-// Vista previa sin persistir; guardar tema utiliza POST protegido por CSRF.
-document.querySelectorAll('[data-theme-preview]').forEach(input=>input.addEventListener('change',e=>{root.dataset.theme=e.target.value;}));
-document.querySelectorAll('[data-toggle-password]').forEach(button=>button.addEventListener('click',()=>{const target=document.getElementById(button.dataset.togglePassword);if(target){target.type=target.type==='password'?'text':'password';button.setAttribute('aria-label',target.type==='password'?'Mostrar contraseña':'Ocultar contraseña');}}));
-document.querySelectorAll('[data-filter-table]').forEach(input=>input.addEventListener('input',()=>{const table=input.closest('.admin-panel')?.querySelector('[data-table]');const q=input.value.trim().toLocaleLowerCase();table?.querySelectorAll('tbody tr').forEach(row=>{row.hidden=!row.textContent.toLocaleLowerCase().includes(q);});}));
-document.querySelectorAll('[data-preview-image]').forEach(input=>input.addEventListener('change',()=>{const preview=input.closest('form')?.querySelector('.upload-preview');const file=input.files?.[0];if(!preview)return;if(preview.dataset.objectUrl)URL.revokeObjectURL(preview.dataset.objectUrl);if(file&&file.type.startsWith('image/')){preview.dataset.objectUrl=URL.createObjectURL(file);preview.src=preview.dataset.objectUrl;preview.hidden=false;}else{preview.hidden=true;}}));
-document.querySelectorAll('[data-close-toast]').forEach(button=>button.addEventListener('click',()=>button.closest('[data-toast]')?.remove()));
-// Diálogo accesible único para confirmaciones de acciones delicadas.
-const dialog=document.createElement('dialog');dialog.className='confirm-dialog';dialog.innerHTML='<form method="dialog"><h2>Confirmar operación</h2><p data-dialog-message></p><div class="dialog-actions"><button value="cancel" class="btn btn-outline">Cancelar</button><button value="confirm" class="btn btn-primary">Confirmar</button></div></form>';
-document.body.appendChild(dialog);
-const submitterState=new WeakSet();document.addEventListener('click',event=>{const button=event.target.closest('[data-confirm]');if(!button||submitterState.has(button))return;const form=button.form;if(!form)return;event.preventDefault();dialog.querySelector('[data-dialog-message]').textContent=button.dataset.confirm;dialog.showModal();dialog.addEventListener('close',()=>{if(dialog.returnValue==='confirm'){submitterState.add(button);form.requestSubmit(button);}}, {once:true});});
-})();
+/* Entrada única. Módulos sin eventos globales duplicados. */
+import './components/navigation.js';
+import './components/feedback.js';
+import './components/forms.js';
+import './animations/hyperframes.js';
+import './pages/legacy.js';

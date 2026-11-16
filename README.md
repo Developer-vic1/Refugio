@@ -77,3 +77,15 @@ El código no puede comprobarse contra la MySQL de tu equipo desde este entorno.
 - `npm run build` compila Tailwind y sincroniza los recursos centrales.
 
 Consulta además `docs/RUTAS_Y_MODULOS.md` y `docs/SEGURIDAD_Y_PUBLICACION.md`.
+
+## Fundamentos V2 en revisión
+
+La estructura modular de CSS, JavaScript, layouts y componentes está descrita en
+`docs/modules/UI_FOUNDATION.md`. La línea base publicada y sus 81 archivos se
+detallan en `docs/progress/BASELINE_V1.md`. Los módulos V2 se revisan mediante PR
+hacia `develop`; su publicación no implica aprobación ni integración.
+
+Ejecuta `php scripts/check-ui.php` para comprobar los contratos de componentes.
+`npm run build` genera el CSS a partir de sus imports y sincroniza todos los módulos
+JavaScript. Las entradas centrales siguen siendo `resources/css/app.css` y
+`resources/js/app.js`.

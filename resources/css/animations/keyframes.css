@@ -1,0 +1,5 @@
+@keyframes float{50%{transform:translateY(-7px)}
+}
+@keyframes slow-zoom{from{transform:scale(1.025)}
+to{transform:scale(1.085)}
+}

@@ -1,0 +1,17 @@
+@view-transition { navigation: auto; }
+:root { --motion-duration: 520; --motion-stagger: 85; --motion-distance: 18; --motion-easing: cubic-bezier(.2,.7,.3,1); }
+[data-motion=serena] { --motion-duration: 360; --motion-stagger: 50; --motion-distance: 8; }
+[data-motion=expresiva] { --motion-duration: 650; --motion-stagger: 100; --motion-distance: 24; }
+/* Sin JavaScript o API de animación, todo el contenido sigue visible. */
+.reveal { opacity: 1; transform: none; }
+.scroll-progress { transform-origin: left; width: 100%; transform: scaleX(0); }
+.btn:active { transform: scale(.98); }
+.action-card { transition: transform var(--duration-normal) var(--ease-standard), box-shadow var(--duration-normal); }
+.action-card:hover { transform: translateY(-5px); }
+::view-transition-old(root) { animation-duration: 140ms; }
+::view-transition-new(root) { animation-duration: 240ms; }
+@media (prefers-reduced-motion: reduce) {
+    @view-transition { navigation: none; }
+    .btn:active, .action-card:hover { transform: none; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+}

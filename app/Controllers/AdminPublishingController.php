@@ -43,13 +43,13 @@
           if($id!==''){if(!$this->find('historias',(int)$id)){http_response_code(404);return;}$set=[];foreach($record as $k=>$v)$set[]='`'.$k.'`=:'.$k;$record['id']=(int)$id;$db->prepare('UPDATE historias SET '.implode(',',$set).' WHERE id=:id')->execute($record);$next=(int)$id;}
           else{$record['creado_por']=(int)$_SESSION['admin_id'];$keys=array_keys($record);$db->prepare('INSERT INTO historias (`'.implode('`,`',$keys).'`) VALUES (:'.implode(',:',$keys).')')->execute($record);$next=(int)$db->lastInsertId();}
           \App\Services\AuditService::record('guardar_historia','historias',$next,['publicada'=>$published]);\flash('Historia guardada.');\redirect('/admin/historias/'.$next.'/editar');
-       }catch(DomainException $e){\flash($e->getMessage());\redirect($id!==''?'/admin/historias/'.$id.'/editar':'/admin/historias/nueva');}
+       }catch(DomainException $e){\flash($e->getMessage(), 'error');\redirect($id!==''?'/admin/historias/'.$id.'/editar':'/admin/historias/nueva');}
     }
     public function storyPhoto(string $id):void {
        if(!$this->find('historias',(int)$id)){http_response_code(404);return;}$path=null;
        try{$path=MediaStorage::upload('foto','historias');$description=trim((string)($_POST['texto_alternativo']??''));
            Database::connection()->prepare('INSERT INTO historia_fotografias(historia_id,ruta,texto_alternativo) VALUES(?,?,?)')->execute([(int)$id,$path,mb_substr($description?:'Imagen de la historia',0,150)]);\flash('Fotografía guardada.');
-       }catch(\Throwable $e){if($path)MediaStorage::delete($path);\flash($e instanceof DomainException?$e->getMessage():'No se pudo guardar la fotografía.');}
+       }catch(\Throwable $e){if($path)MediaStorage::delete($path);\flash($e instanceof DomainException?$e->getMessage():'No se pudo guardar la fotografía.', 'error');}
        \redirect('/admin/historias/'.$id.'/editar');
     }
     public function campaigns():void {$rows=Database::connection()->query('SELECT c.*,a.nombre animal FROM campanas c LEFT JOIN animales a ON a.id=c.animal_id ORDER BY c.id DESC LIMIT 100')->fetchAll();\page('admin/campaigns',['title'=>'Campañas','rows'=>$rows]);}
@@ -69,6 +69,6 @@
          if($id!==''){if(!$this->find('campanas',(int)$id)){http_response_code(404);return;}$set=[];foreach($record as $k=>$v)$set[]='`'.$k.'`=:'.$k;$record['id']=(int)$id;$db->prepare('UPDATE campanas SET '.implode(',',$set).' WHERE id=:id')->execute($record);$next=(int)$id;}
          else{$record['creado_por']=(int)$_SESSION['admin_id'];$keys=array_keys($record);$db->prepare('INSERT INTO campanas (`'.implode('`,`',$keys).'`) VALUES (:'.implode(',:',$keys).')')->execute($record);$next=(int)$db->lastInsertId();}
          \App\Services\AuditService::record('guardar_campana','campanas',$next,['estado'=>$state]);\flash('Campaña guardada.');\redirect('/admin/campanas/'.$next.'/editar');
-       }catch(DomainException $e){\flash($e->getMessage());\redirect($id!==''?'/admin/campanas/'.$id.'/editar':'/admin/campanas/nueva');}
+       }catch(DomainException $e){\flash($e->getMessage(), 'error');\redirect($id!==''?'/admin/campanas/'.$id.'/editar':'/admin/campanas/nueva');}
     }
  }

@@ -1,0 +1,96 @@
+# Línea base V1
+
+- Base remota conservada: `706e4479d2a16b490ff00c8693e211b8dc93b21e`.
+- Rama: `develop`.
+- Commit: `f9840993a6b3dc455328381ec15359f09c931a48`, `Version 1 Refugio Oficial`.
+- Push confirmado contra `git ls-remote origin`: SHA remoto idéntico.
+- `main` local conservada en `b18f4f2`; `main` remota conservada en `706e447`.
+- No se aplicó el ZIP de parche sobre la línea base. La instalación tiene archivos V1 diferentes al parche; no incluye `ContentVisibility` ni modo de revisión local. Su integración corresponde al catálogo.
+- El prompt no existía en `docs/`: se incorporó la copia suministrada desde Descargas.
+- El `.gitignore` remoto se conservó: la variante local fue respaldada fuera del repositorio antes de cambiar de rama.
+- Excluidos: `.env`, dependencias, medios de usuarios, contenido de revisión, privados, SQL, respaldos y secretos. Los subdirectorios públicos vacíos permanecen locales, excluidos por las reglas remotas.
+- Verificación básica: 57 archivos PHP sin errores de sintaxis; `npm run build` correcto; `/` respondió HTTP 200.
+
+## Archivos incorporados (81)
+
+- `.env.example`
+- `README.md`
+- `app/Controllers/AdminAnimalController.php`
+- `app/Controllers/AdminController.php`
+- `app/Controllers/AdminModuleController.php`
+- `app/Controllers/AdminPublishingController.php`
+- `app/Controllers/AdminSettingsController.php`
+- `app/Controllers/AdminVolunteerController.php`
+- `app/Controllers/AdminWorkflowController.php`
+- `app/Controllers/FormController.php`
+- `app/Controllers/MediaController.php`
+- `app/Controllers/PublicController.php`
+- `app/Controllers/ThemeController.php`
+- `app/Core/Auth.php`
+- `app/Core/Database.php`
+- `app/Core/Repository.php`
+- `app/Core/Router.php`
+- `app/Repositories/AnimalRepository.php`
+- `app/Repositories/CampaignRepository.php`
+- `app/Repositories/ContentRepository.php`
+- `app/Services/AuditService.php`
+- `app/Services/Forms.php`
+- `app/Services/MediaStorage.php`
+- `app/Services/ThemeService.php`
+- `app/Views/admin/animal-form.php`
+- `app/Views/admin/animals.php`
+- `app/Views/admin/campaign-form.php`
+- `app/Views/admin/campaigns.php`
+- `app/Views/admin/dashboard.php`
+- `app/Views/admin/listing.php`
+- `app/Views/admin/login.php`
+- `app/Views/admin/settings.php`
+- `app/Views/admin/stories.php`
+- `app/Views/admin/story-form.php`
+- `app/Views/admin/theme.php`
+- `app/Views/admin/volunteer-form.php`
+- `app/Views/admin/volunteer.php`
+- `app/Views/forms/adoption.php`
+- `app/Views/forms/contribution.php`
+- `app/Views/forms/material.php`
+- `app/Views/forms/volunteer.php`
+- `app/Views/layouts/main.php`
+- `app/Views/pages/detail.php`
+- `app/Views/pages/status.php`
+- `app/Views/pages/text.php`
+- `app/Views/public/activity.php`
+- `app/Views/public/animal.php`
+- `app/Views/public/animals.php`
+- `app/Views/public/campaign.php`
+- `app/Views/public/campaigns.php`
+- `app/Views/public/contact.php`
+- `app/Views/public/home.php`
+- `app/Views/public/stories.php`
+- `app/Views/public/transparency.php`
+- `app/Views/public/volunteers.php`
+- `bootstrap.php`
+- `docs/ARQUITECTURA.md`
+- `docs/PROMPT_MAESTRO_CODEX_REFUGIO_GITFLOW_V2.md`
+- `docs/RUTAS_Y_MODULOS.md`
+- `docs/SEGURIDAD_Y_PUBLICACION.md`
+- `docs/VERIFICACIONES.md`
+- `laragon/refugio.test.conf`
+- `package-lock.json`
+- `package.json`
+- `public/.htaccess`
+- `public/assets/css/app.css`
+- `public/assets/css/tailwind.css`
+- `public/assets/img/hero-compania.webp`
+- `public/assets/img/hero-rescate.webp`
+- `public/assets/img/placeholder.svg`
+- `public/assets/js/app.js`
+- `public/dev-router.php`
+- `public/index.php`
+- `resources/css/app.css`
+- `resources/css/tailwind-input.css`
+- `resources/js/app.js`
+- `routes/web.php`
+- `scripts/comprobar-rutas.ps1`
+- `scripts/sync-assets.mjs`
+- `storage/app/private/.gitkeep`
+- `storage/logs/.gitkeep`

@@ -23,6 +23,6 @@
          $stmt->execute([$name,$description,$date,$time,$end?:null,$where,trim((string)($_POST['requisitos']??'')),$cupos,$state,(int)$_SESSION['admin_id']]);
          \App\Services\AuditService::record('crear_actividad','actividades_voluntariado',(int)Database::connection()->lastInsertId());
          \flash('Actividad creada.');\redirect('/admin/voluntariado');
-       }catch(DomainException $e){\flash($e->getMessage());\redirect('/admin/voluntariado/nueva');}
+       }catch(DomainException $e){\flash($e->getMessage(), 'error');\redirect('/admin/voluntariado/nueva');}
     }
  }

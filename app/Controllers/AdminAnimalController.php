@@ -24,11 +24,11 @@
    public function edit(string $id):void {$animal=$this->find((int)$id);if(!$animal){http_response_code(404);return;}$st=Database::connection()->prepare('SELECT * FROM animal_fotografias WHERE animal_id=? ORDER BY es_principal DESC,orden,id');$st->execute([(int)$id]);\page('admin/animal-form',['title'=>'Editar animal','animal'=>$animal,'photos'=>$st->fetchAll()]);}
    public function store():void {
       try{$data=$this->data();$data['creado_por']=(int)$_SESSION['admin_id'];$fields=array_keys($data);$stmt=Database::connection()->prepare('INSERT INTO animales (`'.implode('`,`',$fields).'`) VALUES (:'.implode(',:',$fields).')');$stmt->execute($data);$id=(int)Database::connection()->lastInsertId();\App\Services\AuditService::record('crear_animal','animales',$id);\flash('Animal registrado.');\redirect('/admin/animales/'.$id.'/editar');}
-      catch(DomainException $ex){\flash($ex->getMessage());\redirect('/admin/animales/nuevo');}
+      catch(DomainException $ex){\flash($ex->getMessage(), 'error');\redirect('/admin/animales/nuevo');}
    }
    public function update(string $id):void {if(!$this->find((int)$id)){http_response_code(404);return;}
       try{$data=$this->data();$pairs=[];foreach(array_keys($data) as $key)$pairs[]='`'.$key.'`=:'.$key;$data['id']=(int)$id;Database::connection()->prepare('UPDATE animales SET '.implode(',',$pairs).' WHERE id=:id')->execute($data);\App\Services\AuditService::record('actualizar_animal','animales',(int)$id);\flash('Ficha actualizada.');}
-      catch(DomainException $ex){\flash($ex->getMessage());}\redirect('/admin/animales/'.$id.'/editar');
+      catch(DomainException $ex){\flash($ex->getMessage(), 'error');}\redirect('/admin/animales/'.$id.'/editar');
    }
    public function archive(string $id):void {if(!$this->find((int)$id)){http_response_code(404);return;}Database::connection()->prepare('UPDATE animales SET archivado=1 WHERE id=?')->execute([(int)$id]);\App\Services\AuditService::record('archivar_animal','animales',(int)$id);\flash('Animal archivado sin borrar su historial.');\redirect('/admin/animales');}
    public function upload(string $id):void {
@@ -39,7 +39,7 @@
          $st=$db->prepare('SELECT COUNT(*) FROM animal_fotografias WHERE animal_id=?');$st->execute([(int)$id]);$isMain=(int)$st->fetchColumn()===0?1:0;
          $desc=trim((string)($_POST['texto_alternativo']??''));if($desc==='')$desc='Fotografía del animal';
          $st=$db->prepare('INSERT INTO animal_fotografias(animal_id,ruta,texto_alternativo,es_principal) VALUES(?,?,?,?)');$st->execute([(int)$id,$path,mb_substr($desc,0,150),$isMain]);\App\Services\AuditService::record('subir_fotografia','animal_fotografias',(int)$db->lastInsertId());$db->commit();\flash('Fotografía añadida al animal.');
-      } catch(\Throwable $e){if(isset($db)&&$db->inTransaction())$db->rollBack();if($path)MediaStorage::delete($path);\flash($e instanceof DomainException?$e->getMessage():'No se pudo adjuntar la fotografía.');}
+      } catch(\Throwable $e){if(isset($db)&&$db->inTransaction())$db->rollBack();if($path)MediaStorage::delete($path);\flash($e instanceof DomainException?$e->getMessage():'No se pudo adjuntar la fotografía.', 'error');}
       \redirect('/admin/animales/'.$id.'/editar');
    }
  }
