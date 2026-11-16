@@ -1,0 +1,2 @@
+<?php $id = (string)($props['id'] ?? $props['name']); ?>
+<div class="form-field"><label for="<?= e($id) ?>"><?= e($props['label']) ?></label><input type="date" id="<?= e($id) ?>" name="<?= e($props['name']) ?>" value="<?= e($props['value'] ?? '') ?>" data-refugio-date <?= !empty($props['min']) ? 'min="'.e($props['min']).'"' : '' ?> <?= !empty($props['max']) ? 'max="'.e($props['max']).'"' : '' ?> <?= ($props['required'] ?? false) ? 'required' : '' ?>><?php if (!empty($props['hint'])): ?><small class="field-hint"><?= e($props['hint']) ?></small><?php endif ?></div>

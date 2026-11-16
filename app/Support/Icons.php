@@ -9,6 +9,10 @@ final class Icons
     {
         $paths = [
             'chevron-down' => '<path d="m6 9 6 6 6-6"/>',
+            'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-11 4h.01m4 0h.01M8 18h.01"/>',
+            'refresh' => '<path d="M20 7a9 9 0 1 0 1 9M20 3v5h-5"/>',
+            'chevron-left' => '<path d="m15 6-6 6 6 6"/>',
+            'chevron-right' => '<path d="m9 6 6 6-6 6"/>',
             'paw' => '<ellipse cx="8" cy="6" rx="2" ry="3"/><ellipse cx="16" cy="6" rx="2" ry="3"/><ellipse cx="4" cy="11" rx="2" ry="2.5"/><ellipse cx="20" cy="11" rx="2" ry="2.5"/><path d="M6 19c0-3 3-7 6-7s6 4 6 7c0 4-4 1-6 1s-6 3-6-1Z"/>',
             'grid' => '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
             'heart' => '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',
