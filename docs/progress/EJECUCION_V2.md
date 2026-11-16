@@ -10,8 +10,9 @@ El usuario autorizó continuar y tratar los módulos como aprobados tras su veri
 6. Public home: fcfd1e6, PR #5 integrado como 58e3675. Incluye inicio inmersivo, identidad, Nosotros, Contacto y Privacidad.
 7. Public animals: 13e2344, PR #6 integrado como 2d6066f. Incluye 80 retratos, filtros SQL y galería.
 8. Public adoptions: b25318a, PR #7 integrado como 4012512. Formulario por pasos, PDF y WhatsApp.
-9. Campañas, donaciones y transparencia: contenido y coordinación implementados; publicación en curso.
-10. Voluntariado e historias: siguiente módulo público. Después continúan administración y cierre de calidad.
+9. Campañas, donaciones y transparencia: 0d6b65d, PR #8 integrado como 26f1b61.
+10. Voluntariado e historias: contenido, tres relatos originales y coordinación completados en feature/public-stories-volunteers.
+11. Administración y cierre de calidad permanecen en el backlog del plan.
 
 No se reemplaza MVC ni se crean roles o estadísticas ficticias. Las ampliaciones visuales inmediatas solicitadas en el catálogo se incluyeron en UI foundation; su backend de filtros y paginación quedó completado en public animals.
 
