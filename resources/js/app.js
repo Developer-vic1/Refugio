@@ -11,4 +11,5 @@ import './animations/hyperframes.js';
 import './interactions/depth.js';
 import './interactions/cursor.js';
 import './pages/legacy.js';
+import './pages/institutional.js';
 document.documentElement.classList.remove('no-js');

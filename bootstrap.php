@@ -56,7 +56,7 @@ function take_flash(): ?array {
 }
 function get_flash(): ?string { return take_flash()['message'] ?? null; }
 function component(string $name, array $props = []): string {
-    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog', 'select-field', 'date-field', 'search-field', 'reset-filters', 'motion-preferences'], true)) {
+    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog', 'select-field', 'date-field', 'search-field', 'reset-filters', 'motion-preferences', 'care-moment'], true)) {
         throw new InvalidArgumentException('Componente desconocido');
     }
     ob_start();
@@ -64,6 +64,7 @@ function component(string $name, array $props = []): string {
     catch (Throwable $error) { ob_end_clean(); throw $error; }
 }
 function icon(string $name): string { return \App\Support\Icons::render($name); }
+function site_name(): string { return \App\Services\SiteIdentity::name(); }
 function nav_active(string $href): bool {
     $path = rtrim((string)(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/'), '/') ?: '/';
     return $path === $href || (!in_array($href, ['/', '/admin'], true) && str_starts_with($path, $href . '/'));

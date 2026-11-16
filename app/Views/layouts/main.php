@@ -2,12 +2,12 @@
 <html lang="es" class="no-js" data-theme="<?= e(\App\Services\ThemeService::current()['theme']) ?>" data-motion="<?= e(\App\Services\ThemeService::current()['motion']) ?>">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Refugio Vida Animal: rescate, cuidado, adopciones y solidaridad con información responsable.">
+<meta name="description" content="<?= e(\App\Services\SiteIdentity::settings()['description']) ?>">
 <meta name="color-scheme" content="light">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
-<title><?= e($title ?? 'Inicio') ?> | Refugio Vida Animal</title>
-<link rel="preload" href="/assets/img/hero-rescate.webp" as="image" fetchpriority="high">
+<title><?= e($title ?? 'Inicio') ?> | <?= e(site_name()) ?></title>
+<?php if ((parse_url($_SERVER['REQUEST_URI'] ?? '/',PHP_URL_PATH) ?: '/') === '/'): ?><link rel="preload" href="/assets/img/hero-hogar-v2.webp" as="image" fetchpriority="high"><?php endif ?>
 <link rel="stylesheet" href="/assets/css/tailwind.css">
 <link rel="stylesheet" href="<?= e(versioned_asset('/assets/css/app.css')) ?>">
 <script type="module" src="<?= e(versioned_asset('/assets/js/app.js')) ?>"></script>
