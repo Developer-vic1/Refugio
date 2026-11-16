@@ -1,0 +1,32 @@
+@page { margin: 42px 46px 58px; }
+body { font: 10pt/1.5 "DejaVu Sans",sans-serif; color: #222F2A; }
+header { border-bottom: 2px solid #C5D9C5; padding-bottom: 16px; margin-bottom: 24px; }
+.brand { font-size: 18pt; color: #17463D; font-weight: bold; letter-spacing: -.5px; }
+.tagline { font-size: 8pt; color: #586960; }
+.reference { float: right; text-align: right; font-size: 8pt; color: #586960; }
+.eyebrow { font-size: 8pt; letter-spacing: 1.4px; color: #A94935; text-transform: uppercase; font-weight: bold; }
+h1 { font: 24pt/1.2 "DejaVu Serif",serif; color: #17463D; margin: 12px 0 18px; }
+.hero { width: 100%; border-collapse: collapse; background: #F0F5EC; margin-bottom: 24px; }
+.hero td { padding: 18px; vertical-align: middle; }
+.hero .portrait { width: 145px; padding: 0; }
+.portrait img { width: 145px; height: auto; display: block; }
+.subject { font: 20pt/1.2 "DejaVu Serif",serif; color: #17463D; margin: 4px 0; }
+.note { font-size: 9pt; color: #586960; margin: 7px 0; }
+.section-title { color: #17463D; font: bold 14pt "DejaVu Serif",serif; padding-bottom: 8px; border-bottom: 1px solid #C5D9C5; margin: 22px 0 12px; page-break-after: avoid; }
+.answer { border-left: 3px solid #F3B95D; padding: 4px 0 6px 13px; margin-bottom: 13px; page-break-inside: avoid; overflow-wrap: anywhere; }
+.answer h3 { color: #17463D; font-size: 8pt; text-transform: uppercase; letter-spacing: .7px; margin: 0 0 5px; }
+.answer p { margin: 0; white-space: normal; word-wrap: break-word; }
+.closing { background: #FFF9F2; border: 1px solid #C5D9C5; padding: 16px; margin-top: 22px; page-break-inside: avoid; }
+.closing strong { color: #17463D; }
+.closing p { margin: 6px 0; font-size: 9pt; }
+footer { position: fixed; left: 0; right: 0; bottom: -32px; border-top: 1px solid #C5D9C5; padding-top: 8px; font-size: 7pt; color: #586960; }
+
+.brand-paw { width: 28px; height: 28px; vertical-align: middle; margin-right: 7px; }
+.fact-table { width: 100%; border-collapse: collapse; table-layout: fixed; margin-bottom: 12px; }
+.fact-table td { width: 50%; padding: 10px 14px; vertical-align: top; background: #FFF9F2; border: 4px solid white; }
+.fact-table h3 { font-size: 8pt; color: #17463D; text-transform: uppercase; margin: 0 0 5px; }
+.fact-table p { margin: 0; word-wrap: break-word; }
+.document-section.new-page { page-break-before: always; }
+.continuation { font-size: 8pt; color: #586960; border-bottom: 1px solid #C5D9C5; padding-bottom: 10px; }
+.continuation strong { color: #17463D; }
+.new-page > .section-title { font-size: 19pt; line-height: 1.25; }

@@ -1,0 +1,2 @@
+<div class="admin-pagehead"><div><span class="micro-label">CENTRO DE ATENCIÓN</span><h1>Primero, lo que importa.</h1><p>Registros pendientes calculados directamente desde el sistema. Abre cada módulo para revisar y gestionar.</p></div><?= component('button',['href'=>'/admin','label'=>'Volver al panel','variant'=>'outline']) ?></div>
+<?php require BASE_PATH.'/app/Views/admin/partials/pending-board.php'; ?>

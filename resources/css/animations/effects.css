@@ -1,0 +1,4 @@
+.reveal{opacity:0;transform:translateY(calc(28px * var(--motion-scale)));transition:opacity calc(670ms * var(--motion-scale)) ease,transform calc(670ms * var(--motion-scale)) cubic-bezier(.17,.84,.33,1)}
+.reveal.visible{opacity:1;transform:none}
+.scroll-progress{position:fixed;top:0;left:0;z-index:180;height:3px;width:0;background:var(--terracotta);pointer-events:none}
+.pointer-glow{position:fixed;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--sage),transparent 67%);opacity:0;pointer-events:none;z-index:70;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:opacity .3s}

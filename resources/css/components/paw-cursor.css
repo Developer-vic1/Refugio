@@ -1,0 +1,18 @@
+.paw-cursor { position: fixed; inset: 0 auto auto 0; width: 28px; height: 28px; pointer-events: none; z-index: 119; transition: width 140ms,height 140ms; }
+.paw-cursor > .icon { width: 100%; height: 100%; fill: var(--forest); stroke: var(--cream); stroke-width: .8; transform-origin: 50% 65%; filter: drop-shadow(0 2px 2px var(--sidebar-overlay)); }
+.paw-cursor[data-state]:not([data-state=normal]) { width: 34px; height: 34px; }
+.paw-cursor[data-state]:not([data-state=normal]) > .icon { fill: var(--honey); stroke: var(--forest); stroke-width: 1; }
+.paw-spark { position: fixed; width: 12px; height: 12px; pointer-events: none; z-index: 118; }
+.paw-spark > .icon { width: 100%; height: 100%; fill: var(--terracotta); stroke: var(--cream); stroke-width: .6; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .mode-public,.mode-public a,.mode-public button { cursor: url('/assets/img/cursor-patita.svg') 8 8, pointer; }
+    .mode-public.has-context-cursor,.mode-public.has-context-cursor a,.mode-public.has-context-cursor button { cursor: none; }
+    .mode-public :is(input,textarea,[contenteditable]) { cursor: text; }
+    .mode-public :is(select,[role=combobox],dialog button,dialog a) { cursor: pointer; }
+    .mode-public dialog { cursor: auto; }
+}
+html[data-user-motion=reduced] .mode-public { cursor: auto; }
+html[data-user-motion=reduced] .mode-public :is(a,button) { cursor: pointer; }
+html[data-user-motion=reduced] .mode-public :is(input,textarea,[contenteditable]) { cursor: text; }
+html[data-user-motion=reduced] :is(.paw-cursor,.paw-spark) { display: none !important; }
+@media (prefers-reduced-motion: reduce),(pointer: coarse) { .paw-cursor,.paw-spark { display: none !important; } }
