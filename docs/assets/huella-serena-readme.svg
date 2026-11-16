@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Huella Serena — Un lugar seguro. Un nuevo comienzo.</title>
+  <desc id="desc">Portada con fondo crema, tipografía verde bosque, motivos botánicos y una huella animada.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF9F2"/>
+      <stop offset="0.55" stop-color="#F3F6EB"/>
+      <stop offset="1" stop-color="#E6EFD8"/>
+    </linearGradient>
+    <linearGradient id="forest" x1="0" y1="0" x2="0.8" y2="1">
+      <stop stop-color="#24614F"/>
+      <stop offset="1" stop-color="#17463D"/>
+    </linearGradient>
+    <filter id="shadow" x="-35%" y="-35%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#17463D" flood-opacity=".16"/>
+    </filter>
+    <style>
+      .drift { animation: drift 5s ease-in-out infinite; }
+      .pulse { animation: pulse 3.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .trail { stroke-dasharray: 9 15; animation: march 16s linear infinite; }
+      .spark { animation: twinkle 3s ease-in-out infinite alternate; }
+      .spark:nth-of-type(2) { animation-delay: 1s; }
+      @keyframes drift { 0%,100% { transform: translateY(0) rotate(-2deg) } 50% { transform: translateY(-11px) rotate(2deg) } }
+      @keyframes pulse { 0%,100% { transform: scale(1) } 50% { transform: scale(1.06) } }
+      @keyframes march { to { stroke-dashoffset: -240 } }
+      @keyframes twinkle { from { opacity: .3 } to { opacity: 1 } }
+      @media (prefers-reduced-motion: reduce) { .drift,.pulse,.trail,.spark { animation: none !important; } }
+    </style>
+  </defs>
+  <rect width="1200" height="360" rx="30" fill="url(#bg)"/>
+  <path d="M0 283 Q280 220 510 290 T1200 245 V360 H0Z" fill="#E5ECD9" opacity=".65"/>
+  <path d="M0 335 Q300 270 575 326 T1200 300 V360 H0Z" fill="#D8E6D5" opacity=".65"/>
+  <rect x="0" y="0" width="13" height="360" rx="7" fill="#D39A55"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="65" y="42" width="215" height="32" rx="16" fill="#DDE8D8"/>
+    <circle cx="83" cy="58" r="5" fill="#3B795B" class="spark"/>
+    <text x="98" y="63" fill="#17463D" font-size="13" font-weight="700" letter-spacing="1.4">CUIDADO CON PROPÓSITO</text>
+    <text x="62" y="166" font-family="Georgia, 'Times New Roman', serif" fill="#17463D" font-size="80" font-weight="700" letter-spacing="-2.5">Huella Serena</text>
+    <text x="67" y="209" fill="#40675B" font-size="27" font-weight="400">Un lugar seguro. Un nuevo comienzo.</text>
+    <rect x="67" y="246" width="134" height="34" rx="17" fill="#17463D"/>
+    <text x="90" y="268" fill="#FFF9F2" font-size="14" font-weight="700">RESCATAR</text>
+    <rect x="209" y="246" width="118" height="34" rx="17" fill="#E9BA72"/>
+    <text x="232" y="268" fill="#223B33" font-size="14" font-weight="700">CUIDAR</text>
+    <rect x="335" y="246" width="127" height="34" rx="17" fill="#D8E6D5" stroke="#89A894"/>
+    <text x="355" y="268" fill="#17463D" font-size="14" font-weight="700">ADOPTAR</text>
+    <text x="67" y="322" fill="#53766B" font-size="14" letter-spacing=".5">Comunidad  ·  Bienestar animal  ·  Adopciones responsables</text>
+  </g>
+  <path d="M800 310 C755 220 830 80 950 60 C1095 38 1164 169 1114 293" fill="none" stroke="#C3D8BC" stroke-width="3" class="trail"/>
+  <circle cx="1017" cy="164" r="150" fill="#F2DCA9" opacity=".58"/>
+  <circle cx="1015" cy="167" r="123" fill="url(#forest)" filter="url(#shadow)"/>
+  <circle cx="1017" cy="168" r="109" fill="none" stroke="#80A68D" stroke-width="1.5" opacity=".4"/>
+  <g class="drift" fill="#FFF9F2">
+    <ellipse cx="982" cy="130" rx="13" ry="20" transform="rotate(-22 982 130)"/>
+    <ellipse cx="1021" cy="117" rx="13" ry="20" transform="rotate(-1 1021 117)"/>
+    <ellipse cx="1060" cy="132" rx="13" ry="20" transform="rotate(22 1060 132)"/>
+    <ellipse cx="965" cy="167" rx="12" ry="18" transform="rotate(-36 965 167)"/>
+    <ellipse cx="1078" cy="171" rx="12" ry="18" transform="rotate(36 1078 171)"/>
+    <path d="M968 220C968 193 988 166 1018 166s50 27 50 54c0 30-30 13-50 13s-50 17-50-13Z"/>
+  </g>
+  <circle cx="839" cy="92" r="9" fill="#D39A55" class="pulse"/>
+  <circle cx="1151" cy="86" r="7" fill="#A8C3A7" class="spark"/>
+  <path d="M862 227c20-18 34-20 48-10M854 243c12-6 20-5 29 1" fill="none" stroke="#BA7658" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+  <path d="M1152 264l6-18 6 18 18 6-18 5-6 18-6-18-18-5Z" fill="#D39A55" class="spark"/>
+</svg>
