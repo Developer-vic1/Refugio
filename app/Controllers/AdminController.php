@@ -8,7 +8,7 @@ final class AdminController {
     public function login():void {if (Auth::check()) \redirect('/admin');\page('admin/login',['title'=>'Ingreso administrativo']);}
     public function authenticate():void {
         $email=trim((string)($_POST['usuario']??''));$password=(string)($_POST['contrasena']??'');
-        if (strlen($email)>150 || strlen($password)>1024) {\flash('Credenciales no válidas');\redirect('/admin/login');}
+        if (strlen($email)>150 || strlen($password)>1024) {\flash('Credenciales no válidas', 'error');\redirect('/admin/login');}
         $ip=(string)($_SERVER['REMOTE_ADDR']??'0.0.0.0');$db=Database::connection();
         $q=$db->prepare('SELECT COUNT(*) FROM intentos_login WHERE ((identificador=:u) OR ip=:ip) AND exitoso=0 AND creado_en>DATE_SUB(NOW(),INTERVAL 15 MINUTE)');
         $q->execute(['u'=>$email,'ip'=>$ip]);
@@ -17,7 +17,7 @@ final class AdminController {
         $q->execute(['u'=>$email,'c'=>$email]);$admin=$q->fetch();
         $valid=$admin && Auth::verifyPbkdf2($password,(string)$admin['contrasena_hash']);
         $log=$db->prepare('INSERT INTO intentos_login(identificador,ip,exitoso) VALUES(?,?,?)');$log->execute([$email,$ip,$valid?1:0]);
-        if (!$valid){\flash('Usuario o contraseña incorrectos');\redirect('/admin/login');}
+        if (!$valid){\flash('Usuario o contraseña incorrectos', 'error');\redirect('/admin/login');}
         Auth::login($admin);
         $db->prepare('UPDATE administradores SET ultimo_acceso=NOW() WHERE id=?')->execute([(int)$admin['id']]);
         \redirect('/admin');

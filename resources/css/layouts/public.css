@@ -1,0 +1,15 @@
+.site-header{position:sticky;z-index:80;top:0;background:var(--glass);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
+.site-header-inner{display:flex;align-items:center;min-height:80px;gap:2rem}
+.brand{display:inline-flex;align-items:center;gap:12px;line-height:1.06;min-width:max-content;font-weight:800;color:var(--forest);font-size:17px;letter-spacing:-.055em}
+.brand b{display:block;font-size:20px}
+.brand-icon{display:inline-flex;align-items:center;justify-content:center;font-size:31px;color:var(--cream);background:var(--forest);width:52px;height:52px;border-radius:45% 55% 48% 52%;position:relative;transform:rotate(-11deg)}
+.brand-icon:after{content:'♥';position:absolute;right:-8px;top:-12px;color:var(--terracotta);font-size:15px;transform:rotate(11deg)}
+.main-nav{display:flex;align-items:center;justify-content:flex-end;gap:13px;margin-left:auto}
+.nav-link{font-size:12px;font-weight:750;padding:9px 5px;position:relative;white-space:nowrap;transition:color .22s}
+.nav-link:after{content:'';position:absolute;left:5px;right:5px;bottom:3px;height:2px;background:var(--terracotta);transform:scaleX(0);transform-origin:left;transition:transform .22s}
+.nav-link:hover,.nav-link.selected{color:var(--forest)}
+.nav-link:hover:after,.nav-link.selected:after{transform:scaleX(1)}
+.admin-entry{margin-left:12px;border:1px solid var(--forest);font-size:12px;font-weight:800;padding:10px 14px;border-radius:99px;white-space:nowrap;transition:background .2s,color .2s}
+.admin-entry:hover{background:var(--forest);color:var(--paper)}
+.menu-toggle{display:none}
+.site-content{min-height:70vh}

@@ -1,0 +1,5 @@
+const root=document.documentElement;
+// Vista previa sin persistir; guardar tema utiliza POST protegido por CSRF.
+document.querySelectorAll('[data-theme-preview]').forEach(input=>input.addEventListener('change',e=>{root.dataset.theme=e.target.value;}));
+document.querySelectorAll('[data-filter-table]').forEach(input=>input.addEventListener('input',()=>{const table=input.closest('.admin-panel')?.querySelector('[data-table]');const q=input.value.trim().toLocaleLowerCase();table?.querySelectorAll('tbody tr').forEach(row=>{row.hidden=!row.textContent.toLocaleLowerCase().includes(q);});}));
+document.querySelectorAll('[data-preview-image]').forEach(input=>input.addEventListener('change',()=>{const preview=input.closest('form')?.querySelector('.upload-preview');const file=input.files?.[0];if(!preview)return;if(preview.dataset.objectUrl)URL.revokeObjectURL(preview.dataset.objectUrl);if(file&&file.type.startsWith('image/')){preview.dataset.objectUrl=URL.createObjectURL(file);preview.src=preview.dataset.objectUrl;preview.hidden=false;}else{preview.hidden=true;}}));

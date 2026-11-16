@@ -1,0 +1,5 @@
+.confirm-dialog{border:1px solid var(--line);border-radius:22px;padding:30px;max-width:min(440px,calc(100% - 30px));background:var(--paper);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.confirm-dialog::backdrop{background:rgba(16,27,25,.7);backdrop-filter:blur(4px)}
+.confirm-dialog h2{font-size:28px}
+.confirm-dialog p{color:var(--muted)}
+.confirm-dialog .dialog-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:24px}

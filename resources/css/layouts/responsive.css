@@ -1,0 +1,90 @@
+@media(max-width:1400px){.main-nav{gap:6px}
+.site-header-inner{gap:18px}
+.nav-link{font-size:11px}
+.admin-entry{padding:9px 11px;font-size:10px}
+.container-shell,.wrap{width:min(1320px,calc(100% - 56px))}
+}
+
+@media(max-width:1120px){.menu-toggle{margin-left:auto;border:0;background:transparent;display:flex;flex-direction:column;gap:6px;padding:12px}
+.menu-toggle span{display:block;width:25px;height:2px;background:var(--forest)}
+.main-nav{display:none;position:absolute;left:0;right:0;top:80px;padding:22px 28px 32px;background:var(--cream);max-height:calc(100vh - 80px);overflow-y:auto;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.main-nav.open{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.main-nav .nav-link{font-size:14px}
+.main-nav .admin-entry{margin:0;grid-column:1/-1;justify-self:start}
+.site-header-inner{min-height:80px}
+.hero-home,.hero-content{min-height:650px}
+.hero-copy{max-width:560px}
+.hero-photo{background-position:62% center}
+.hero-wash{background:linear-gradient(90deg,var(--cream),rgba(255,249,242,.84) 40%,rgba(255,249,242,.10) 94%)}
+.action-grid{gap:10px}
+.action-card{padding:22px}
+.action-card h3{font-size:26px}
+.mission-inner{gap:14px}
+.mission-inner .label-mini{display:none}
+.admin-shell{grid-template-columns:215px 1fr}
+.admin-content{width:calc(100% - 40px)}
+.admin-topbar{padding:0 25px}
+.animal-editor-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:760px){.container-shell,.wrap{width:calc(100% - 36px)}
+.hero-home{min-height:750px}
+.hero-photo{background-position:69% 100%;background-size:auto 68%;background-repeat:no-repeat;transform:none;animation:none}
+.hero-wash{background:linear-gradient(180deg,var(--cream) 0%,var(--cream) 41%,rgba(255,249,242,.25) 72%,transparent)}
+.hero-content{min-height:750px;padding:65px 0 310px;align-items:flex-start}
+.hero-copy h1{font-size:clamp(42px,10vw,65px);margin:14px 0}
+.hero-copy p{font-size:14px;max-width:550px}
+.hero-caption{margin-top:17px}
+.hero-scrolldown{display:none}
+.hero-actions{margin-top:25px}
+.hero-actions .btn{padding:12px 16px}
+.hero-actions .text-cta{margin:4px 0}
+.mission-inner{flex-wrap:wrap;justify-content:center;font-size:18px;gap:10px 17px}
+.mission-inner span[aria-hidden]{display:none}
+.section-space,.section{padding-block:65px}
+.section-lead{align-items:flex-start;flex-direction:column;gap:10px}
+.section-lead>p{max-width:650px}
+.action-grid{grid-template-columns:1fr}
+.action-card{min-height:280px}
+.action-symbol{font-size:100px;top:30px}
+.empty-feature{grid-template-columns:1fr;padding:15px;gap:22px}
+.empty-feature>div:last-child{padding:0 18px 25px}
+.empty-visual img{height:230px}
+.pet-grid,.animal-grid{grid-template-columns:repeat(2,1fr)}
+.story-section{grid-template-columns:1fr}
+.story-photo{height:300px}
+.story-copy{padding:50px 28px}
+.trust-grid{grid-template-columns:1fr}
+.trust-more{grid-column:auto}
+.footer-inner{grid-template-columns:repeat(2,1fr)}
+.form-row,.form-pair,.detail-grid,.three-cols,.duo{grid-template-columns:1fr}
+.admin-shell{display:block}
+.admin-sidebar{position:fixed;top:0;left:-280px;width:270px;transition:left .25s}
+.admin-sidebar.open{left:0}
+.mobile-admin-toggle{display:block}
+.admin-topbar{height:70px;gap:16px}
+.admin-content{padding-top:25px}
+.admin-pagehead{flex-direction:column;align-items:flex-start}
+.admin-dual{grid-template-columns:1fr}
+.login-screen{grid-template-columns:1fr}
+.login-picture{display:none}
+.login-form-area{padding:80px 20px}
+.themes-grid,.motion-options{grid-template-columns:1fr}
+.theme-swatch{height:85px}
+}
+
+@media(max-width:480px){h2{font-size:37px}
+.hero-content{padding-top:48px}
+.hero-copy h1{font-size:46px}
+.hero-photo{background-size:auto 57%}
+.hero-actions .btn{width:100%}
+.pet-grid,.animal-grid,.footer-inner,.stats-grid,.quick-grid{grid-template-columns:1fr}
+.main-nav.open{grid-template-columns:1fr}
+.site-header-inner{min-height:74px}
+.main-nav{top:74px}
+.action-card{min-height:250px}
+.footer-note{margin-top:30px}
+.form-card,.admin-panel{padding:18px}
+.admin-profile{font-size:10px}
+}

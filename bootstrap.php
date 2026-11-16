@@ -45,8 +45,33 @@ function verify_csrf(): void {
         http_response_code(419); exit('Formulario expirado. Actualiza la página.');
     }
 }
-function flash(string $message): void { $_SESSION['flash'] = $message; }
-function get_flash(): ?string { $message = $_SESSION['flash'] ?? null; unset($_SESSION['flash']); return $message; }
+function flash(string $message, string $type = 'success'): void {
+    $_SESSION['flash'] = ['message' => $message, 'type' => \App\Support\Ui::noticeType($type)];
+}
+function take_flash(): ?array {
+    $notice = $_SESSION['flash'] ?? null;
+    unset($_SESSION['flash']);
+    if (is_string($notice)) return ['message' => $notice, 'type' => 'info'];
+    return is_array($notice) ? ['message' => (string)($notice['message'] ?? ''), 'type' => \App\Support\Ui::noticeType((string)($notice['type'] ?? 'info'))] : null;
+}
+function get_flash(): ?string { return take_flash()['message'] ?? null; }
+function component(string $name, array $props = []): string {
+    if (!in_array($name, ['alert', 'badge', 'button', 'empty-state', 'form-field', 'breadcrumbs', 'progress', 'skeleton', 'toast', 'confirm-dialog'], true)) {
+        throw new InvalidArgumentException('Componente desconocido');
+    }
+    ob_start();
+    try { require BASE_PATH . '/app/Views/components/' . $name . '.php'; return (string)ob_get_clean(); }
+    catch (Throwable $error) { ob_end_clean(); throw $error; }
+}
+function icon(string $name): string { return \App\Support\Icons::render($name); }
+function nav_active(string $href): bool {
+    $path = rtrim((string)(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/'), '/') ?: '/';
+    return $path === $href || (!in_array($href, ['/', '/admin'], true) && str_starts_with($path, $href . '/'));
+}
+function versioned_asset(string $path): string {
+    $file = BASE_PATH . '/public' . $path;
+    return $path . '?v=' . (is_file($file) ? substr(hash_file('sha256', $file), 0, 12) : '1');
+}
 function page(string $view, array $data = [], int $status = 200): void {
     http_response_code($status);
     $file = BASE_PATH . '/app/Views/' . $view . '.php';
