@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es" data-theme="<?= e(\App\Services\ThemeService::current()['theme']) ?>" data-motion="<?= e(\App\Services\ThemeService::current()['motion']) ?>">
+<html lang="es" class="no-js" data-theme="<?= e(\App\Services\ThemeService::current()['theme']) ?>" data-motion="<?= e(\App\Services\ThemeService::current()['motion']) ?>">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Refugio Vida Animal: rescate, cuidado, adopciones y solidaridad con información responsable.">

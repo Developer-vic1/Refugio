@@ -44,6 +44,7 @@ $router->get('/confirmacion',[Forms::class,'confirmation']);
 $router->get('/admin/login',[Admin::class,'login']);
 $router->post('/admin/login',[Admin::class,'authenticate']);
 $router->get('/admin',[Admin::class,'dashboard'],true);
+$router->get('/admin/pendientes',[Admin::class,'pending'],true);
 $router->post('/admin/logout',[Admin::class,'logout'],true);
 $router->get('/admin/animales',[AdminAnimalController::class,'index'],true);
 $router->get('/admin/animales/nuevo',[AdminAnimalController::class,'create'],true);
