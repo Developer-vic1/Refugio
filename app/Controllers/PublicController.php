@@ -6,12 +6,16 @@ use App\Repositories\ContentRepository;
 use App\Repositories\CampaignRepository;
 use App\Services\ContentVisibility;
 use App\Support\AnimalFilters;
+use App\Services\PublicInitiatives;
 final class PublicController {
     private function enabled():bool {return \env('PUBLIC_CONTENT_ENABLED','false') === 'true';}
     public function home():void { $animals=ContentVisibility::visible()?(new AnimalRepository())->catalog('', '',4):[];\page('public/home',['title'=>'Inicio','animals'=>$animals,'reviewMode'=>ContentVisibility::localReview()]); }
     public function about():void { \page('public/about',['title'=>'Nuestra historia empieza aquí']); }
     public function adoptionInfo():void { \page('public/adoptions',['title'=>'Un hogar empieza con una decisión consciente']); }
-    public function donationInfo():void { \page('pages/text',['title'=>'Cómo colaborar','lead'=>'Puedes conocer las campañas publicadas o proponer una donación material. Los aportes monetarios requieren confirmación administrativa.','link'=>'/campanas','linkLabel'=>'Ver campañas','secondLink'=>'/donaciones/materiales','secondLabel'=>'Ofrecer donación material']); }
+    public function donationInfo():void {
+        $line=is_string($_GET['linea']??null)?$_GET['linea']:'';
+        \page('public/donations',['title'=>'Lo sencillo también puede cuidar','selectedLine'=>PublicInitiatives::find($line)?$line:'']);
+    }
     public function contact():void { \page('public/contact',['title'=>'Hablemos']); }
     public function privacy():void {\page('public/privacy',['title'=>'Tu información, con cuidado']);}
     public function animals():void {
@@ -35,8 +39,13 @@ final class PublicController {
         if (!$photos) $photos[] = ['src'=>\asset(null),'alt'=>'Perfil de '.$animal['nombre'].'; imagen pendiente'];
         \page('public/animal',['title'=>$animal['nombre'],'animal'=>$animal,'photos'=>$photos,'reviewMode'=>ContentVisibility::localReview()]);
     }
-    public function campaigns():void {$items=$this->enabled()?(new CampaignRepository())->active():[];\page('public/campaigns',['title'=>'Campañas','items'=>$items]);}
-    public function campaign(string $id):void {$item=$this->enabled()?(new CampaignRepository())->find((int)$id):false;if(!$item){\page('pages/status',['title'=>'Campaña no disponible','message'=>'No hay una campaña pública para este enlace.'],404);return;}\page('public/campaign',['title'=>$item['titulo'],'item'=>$item]);}
+    public function campaigns():void {$items=$this->enabled()?(new CampaignRepository())->active():[];\page('public/campaigns',['title'=>'La ayuda encuentra su camino','items'=>$items,'initiatives'=>PublicInitiatives::all()]);}
+    public function campaign(string $id):void {
+        if($initiative=PublicInitiatives::find($id)){\page('public/initiative',['title'=>$initiative['title'],'initiative'=>$initiative,'slug'=>$id]);return;}
+        $item=$this->enabled()&&ctype_digit($id)?(new CampaignRepository())->find((int)$id):false;
+        if(!$item){\page('pages/status',['title'=>'Campaña no disponible','message'=>'No hay una campaña pública para este enlace.'],404);return;}
+        \page('public/campaign',['title'=>$item['titulo'],'item'=>$item]);
+    }
     public function stories():void {$items=$this->enabled()?(new ContentRepository())->stories():[];\page('public/stories',['title'=>'Historias','items'=>$items]);}
     public function story(string $id):void {$item=$this->enabled()?(new ContentRepository())->story((int)$id):false;if(!$item){\page('pages/status',['title'=>'Historia no encontrada','message'=>'Esta historia no está publicada.'],404);return;}\page('pages/detail',['title'=>$item['titulo'],'item'=>$item]);}
     public function volunteers():void {$items=$this->enabled()?(new ContentRepository())->activities():[];\page('public/volunteers',['title'=>'Voluntariado','items'=>$items]);}

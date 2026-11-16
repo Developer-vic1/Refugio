@@ -9,8 +9,9 @@ El usuario autorizó continuar y tratar los módulos como aprobados tras su veri
 5. Motion engine: `d21b7c7`, PR #4 integrado como `845e018`.
 6. Public home: fcfd1e6, PR #5 integrado como 58e3675. Incluye inicio inmersivo, identidad, Nosotros, Contacto y Privacidad.
 7. Public animals: 13e2344, PR #6 integrado como 2d6066f. Incluye 80 retratos, filtros SQL y galería.
-8. Public adoptions: formulario por pasos, PDF y WhatsApp implementados; publicación en curso.
-9. Prioridad pública: campañas, donaciones, voluntariado, historias y transparencia. Después continúan administración y cierre de calidad.
+8. Public adoptions: b25318a, PR #7 integrado como 4012512. Formulario por pasos, PDF y WhatsApp.
+9. Campañas, donaciones y transparencia: contenido y coordinación implementados; publicación en curso.
+10. Voluntariado e historias: siguiente módulo público. Después continúan administración y cierre de calidad.
 
 No se reemplaza MVC ni se crean roles o estadísticas ficticias. Las ampliaciones visuales inmediatas solicitadas en el catálogo se incluyeron en UI foundation; su backend de filtros y paginación quedó completado en public animals.
 

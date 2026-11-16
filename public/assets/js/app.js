@@ -14,4 +14,5 @@ import './pages/legacy.js';
 import './pages/institutional.js';
 import './components/media-gallery.js';
 import './pages/adoption.js';
+import './pages/participation.js';
 document.documentElement.classList.remove('no-js');

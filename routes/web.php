@@ -13,6 +13,7 @@ use App\Controllers\MediaController;
 use App\Controllers\AdminPublishingController;
 use App\Controllers\AdminVolunteerController;
 use App\Controllers\AdoptionPreparationController;
+use App\Controllers\PublicCoordinationController;
 $router=new Router();
 $router->get('/revision/animales/{filename}',[MediaController::class,'review']);
 $router->get('/media/{bucket}/{filename}',[MediaController::class,'serve']);
@@ -41,6 +42,7 @@ $router->get('/historias/{id}',[PublicSite::class,'story']);
 $router->get('/transparencia',[PublicSite::class,'transparency']);
 $router->get('/transparencia/informes/{id}',[PublicSite::class,'report']);
 $router->get('/contacto',[PublicSite::class,'contact']);
+$router->post('/colaborar/preparar',[PublicCoordinationController::class,'prepare']);
 $router->get('/privacidad',[PublicSite::class,'privacy']);
 $router->get('/confirmacion',[Forms::class,'confirmation']);
 // Autenticación del administrador y módulos inicialmente de consulta.
