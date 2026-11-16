@@ -1,0 +1,16 @@
+<?php
+declare(strict_types=1);
+if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
+$arguments = array_slice($argv, 1);
+if ($arguments !== [] && $arguments !== ['--no-browser']) {
+    fwrite(STDERR, "Uso: php start [--no-browser]\n");
+    exit(1);
+}
+if (PHP_OS_FAMILY !== 'Windows') {
+    fwrite(STDERR, "Este iniciador es para Windows. Consulta README.md para otros entornos.\n");
+    exit(1);
+}
+$command = [getenv('WINDIR').'\\System32\\WindowsPowerShell\\v1.0\\powershell.exe', '-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', __DIR__.'/scripts/Iniciar-Refugio.ps1'];
+if ($arguments) $command[] = '-NoBrowser';
+$process = proc_open($command, [STDIN, STDOUT, STDERR], $pipes, __DIR__);
+exit(is_resource($process) ? proc_close($process) : 1);

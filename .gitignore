@@ -74,3 +74,6 @@ Desktop.ini
 .codex/
 .playwright-cli/
 /output/
+
+# Accesos de Windows: contienen rutas absolutas de cada equipo.
+/*.lnk

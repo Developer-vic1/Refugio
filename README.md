@@ -1,6 +1,18 @@
-# Refugio Vida Animal — versión inicial para Laragon
+# Huella Serena — Refugio, Version 2
 
 Sistema web con **PHP 8.2+**, **MySQL 8/MariaDB**, **MVC modular**, **HTML**, **JavaScript** y **Tailwind CSS v4**. Incluye un diseño público editorial con fotografía protagonista, animaciones, adaptación móvil y un panel de administración con selector global de identidad visual.
+
+## Abrir con un clic en Windows
+
+En este equipo, abre **Huella Serena - Refugio** desde el escritorio o desde la carpeta del proyecto. También puedes hacer doble clic en **Iniciar Refugio.cmd**. No necesitas escribir el comando del servidor ni abrir la ventana de Laragon.
+
+Para crear nuevamente los accesos con el icono de patita, abre **Crear acceso directo.cmd**. Si prefieres la terminal, el comando corto es `php start`.
+
+El iniciador usa PHP y la base MySQL que ya tienes instalados. Reutiliza el servidor de este proyecto si está abierto; si otro programa ocupa el puerto 8000, busca uno libre hasta el 8010. Abre la página únicamente cuando la conexión a la base responde. Cerrar la pestaña conserva el servidor disponible para volver a entrar.
+
+La primera ejecución con MySQL activo recuerda exclusivamente su carpeta, versión y puerto en `storage/framework/launcher/`, excluido de Git. Los siguientes arranques pueden iniciar esa misma instalación MySQL 8 sin abrir Laragon. No crea tablas, no importa datos y no copia contraseñas. Si cambias la instalación, abre tu MySQL habitual una vez para actualizar la referencia. El arranque automático de MySQL se limita a conexiones locales y escucha en `127.0.0.1`.
+
+En otro equipo debes instalar PHP 8.2+ con las extensiones indicadas, ejecutar `composer install`, disponer de la base existente y configurar tu propio `.env`. El acceso directo se vuelve a crear allí; no contiene una base portátil. Los errores se muestran en una ventana breve y los registros quedan en `storage/logs/`, fuera del repositorio.
 
 ## 1. Instalación en Laragon (Windows)
 
@@ -67,12 +79,13 @@ Las fotografías que incorpora el administrador se guardan en:
 
 Esta es una **primera versión integrada**, no un sistema listo para producción. Falta completar y validar en Laragon: formalización y seguimiento de adopciones; kardex de inventario con comprobantes; alta, revisión y conciliación de gastos; informes financieros publicables; archivos y evidencias privadas; permisos granulares para las diez cuentas; sistema de notificaciones por correo; formulario de contacto con persistencia; anti-spam y controles perimetrales; pruebas automatizadas de integración y aceptación; copias de seguridad, privacidad institucional y revisión de datos reales.
 
-El código no puede comprobarse contra la MySQL de tu equipo desde este entorno. La verificación real de altas, claves foráneas, medios y transacciones debe hacerse localmente antes de habilitar el acceso público.
+La conexión local, el catálogo y los flujos públicos de preparación se han revisado durante V2. La aceptación integral de operaciones administrativas y datos reales permanece pendiente antes de habilitar acceso público de producción. Consulta `docs/progress/EJECUCION_V2.md`.
 
 ## 7. Comprobaciones rápidas
 
 - `php -l public/index.php` valida la sintaxis de un archivo.
 - `php -S 127.0.0.1:8000 -t public public/dev-router.php` ejecuta una prueba de desarrollo alternativa a Laragon.
+- `php start` abre el proyecto con el iniciador de Windows; `php start --no-browser` comprueba el arranque sin abrir una pestaña.
 - `powershell -ExecutionPolicy Bypass -File scripts/comprobar-rutas.ps1 -BaseUrl http://refugio.test` revisa las rutas HTTP esenciales.
 - `npm run build` compila Tailwind y sincroniza los recursos centrales.
 
