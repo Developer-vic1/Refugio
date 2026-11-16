@@ -1,6 +1,6 @@
 # Seguimiento de V2
 
-El usuario autorizó continuar y tratar los módulos como aprobados tras su verificación. Se mantiene una rama y PR por módulo, sin force push y sin cambios en main. La exclusión de archivos de herramientas locales, secretos, SQL y privados permanece obligatoria.
+El usuario autorizó continuar y tratar los módulos como aprobados tras su verificación. Se mantiene una rama y PR por módulo, sin force push. El 16 de noviembre de 2026 autorizó expresamente publicar el estado actual en main como `Version 2`. La exclusión de archivos de herramientas locales, secretos, SQL y privados permanece obligatoria.
 
 1. Línea base V1: `f984099`, publicada en develop.
 2. UI foundation: `0b50470`, PR #1 integrado como `02f18b7`.
@@ -11,8 +11,9 @@ El usuario autorizó continuar y tratar los módulos como aprobados tras su veri
 7. Public animals: 13e2344, PR #6 integrado como 2d6066f. Incluye 80 retratos, filtros SQL y galería.
 8. Public adoptions: b25318a, PR #7 integrado como 4012512. Formulario por pasos, PDF y WhatsApp.
 9. Campañas, donaciones y transparencia: 0d6b65d, PR #8 integrado como 26f1b61.
-10. Voluntariado e historias: contenido, tres relatos originales y coordinación completados en feature/public-stories-volunteers.
+10. Voluntariado e historias: eb08217, PR #9 integrado como e55635c. Contenido, tres relatos originales y coordinación.
 11. Administración y cierre de calidad permanecen en el backlog del plan.
+12. Inicio directo de Windows: feature/desktop-launcher. Accesos con icono, comando `php start`, reutilización del servidor y arranque de la instalación MySQL local recordada; sin cambios de esquema ni configuración de Laragon. Cierre de la edición actual en main con el título `Version 2`, autorizado por el usuario.
 
 No se reemplaza MVC ni se crean roles o estadísticas ficticias. Las ampliaciones visuales inmediatas solicitadas en el catálogo se incluyeron en UI foundation; su backend de filtros y paginación quedó completado en public animals.
 

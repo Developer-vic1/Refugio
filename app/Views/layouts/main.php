@@ -4,6 +4,11 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="<?= e(\App\Services\SiteIdentity::settings()['description']) ?>">
 <meta name="color-scheme" content="light">
+<meta name="application-name" content="<?= e(site_name()) ?>">
+<meta name="theme-color" content="#17463d">
+<link rel="icon" href="<?= e(versioned_asset('/favicon.ico')) ?>" sizes="any">
+<link rel="icon" href="<?= e(versioned_asset('/assets/img/huella-serena.svg')) ?>" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/huella-serena-180.png">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="csrf-token" content="<?= e(csrf_token()) ?>">
 <title><?= e($title ?? 'Inicio') ?> | <?= e(site_name()) ?></title>
