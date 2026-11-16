@@ -13,6 +13,7 @@ use App\Controllers\MediaController;
 use App\Controllers\AdminPublishingController;
 use App\Controllers\AdminVolunteerController;
 $router=new Router();
+$router->get('/revision/animales/{filename}',[MediaController::class,'review']);
 $router->get('/media/{bucket}/{filename}',[MediaController::class,'serve']);
 // 20 interfaces públicas (incluyen 4 formularios).
 $router->get('/',[PublicSite::class,'home']);
