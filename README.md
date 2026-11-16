@@ -67,12 +67,12 @@ Diseño **Bosque y Hogar**, paleta cálida, animaciones accesibles, transiciones
 2. Copia <code>.env.example</code> como <code>.env</code> y configura la conexión local.
 3. En la carpeta del proyecto, ejecuta:
 
-   \`\`\`powershell
+   ```powershell
    composer install
    npm install
    npm run build
    php start
-   \`\`\`
+   ```
 
 También puedes abrir **<code>Iniciar Refugio.cmd</code>** en Windows. Si utilizas Apache de Laragon, apunta el VirtualHost a <code>public/</code>, nunca a la raíz.
 
@@ -81,11 +81,11 @@ También puedes abrir **<code>Iniciar Refugio.cmd</code>** en Windows. Si utiliz
 <details>
 <summary><strong>🧩 ¿Cómo está organizado?</strong></summary>
 
-\`\`\`text
+```text
 public/index.php → Router → Controller → Service/Repository → MySQL
                                 ↓
                        Vista PHP + Tailwind + JS
-\`\`\`
+```
 
 **Código:** <code>app/</code> · **Rutas:** <code>routes/</code> · **Estilos y movimiento:** <code>resources/</code> · **Archivos protegidos:** <code>storage/</code>.
 
