@@ -21,9 +21,9 @@
     <form class="catalogue-filters" action="/animales" method="get" role="search" aria-label="Buscar animales">
         <div class="catalogue-filter-title"><span><?= icon('search') ?></span><div><h2 id="catalogue-title">Encuentra tu próximo vínculo</h2><p>Busca por nombre o especie.</p></div></div>
         <div class="catalogue-filter-fields">
-            <div class="form-field"><label for="animal-search">Nombre o especie</label><div class="search-field"><?= icon('search') ?><input id="animal-search" type="search" name="q" value="<?= e($query) ?>" maxlength="80" placeholder="¿A quién te gustaría conocer?"></div></div>
-            <div class="form-field"><label for="animal-species">Especie</label><select id="animal-species" name="especie"><option value="">Todos los compañeros</option><?php foreach(['Perro','Gato'] as $option): ?><option value="<?= e($option) ?>" <?= strcasecmp($species,$option)===0?'selected':'' ?>><?= e($option) ?></option><?php endforeach ?></select></div>
-            <div class="catalogue-filter-actions"><button class="btn btn-primary" type="submit">Buscar <?= icon('search') ?></button><a class="filter-reset" href="/animales">Limpiar filtros</a></div>
+            <?= component('search-field',['id'=>'animal-search','name'=>'q','label'=>'Nombre o especie','value'=>$query,'placeholder'=>'¿A quién te gustaría conocer?']) ?>
+            <?= component('select-field',['id'=>'animal-species','name'=>'especie','label'=>'Especie','value'=>$species,'options'=>[['value'=>'','label'=>'Todos los compañeros'],['value'=>'Perro','label'=>'Perro'],['value'=>'Gato','label'=>'Gato']]]) ?>
+            <div class="catalogue-filter-actions"><button class="btn btn-primary" type="submit">Buscar <?= icon('search') ?></button><?= component('reset-filters',['href'=>'/animales']) ?></div>
         </div>
     </form>
     <?php if (!$animals): ?>

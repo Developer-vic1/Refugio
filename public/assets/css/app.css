@@ -756,3 +756,60 @@ input[aria-invalid=true], textarea[aria-invalid=true], select[aria-invalid=true]
     .workspace-recent .ui-badge { font-size: 10px; }
     .admin-panel .panel-head { flex-wrap: wrap; gap: 12px; }
 }
+
+.refugio-select { position: relative; min-width: 0; }
+.refugio-native-select { position: absolute !important; width: 1px !important; height: 1px !important; min-height: 0 !important; padding: 0 !important; overflow: hidden; clip-path: inset(50%); pointer-events: none; }
+.refugio-select-trigger { width: 100%; min-width: 0; min-height: 50px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 14px; border: 1px solid var(--color-control-border); border-radius: var(--radius-control); background: var(--cream); color: var(--ink); text-align: left; font: 600 .875rem/1.5 var(--font-body); transition: border-color var(--duration-fast),background var(--duration-fast); }
+.refugio-select-trigger > span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.refugio-select-trigger > .icon { width: 18px; height: 18px; color: var(--forest); transition: transform var(--duration-fast); }
+.refugio-select-trigger:hover,.refugio-select-trigger[aria-expanded=true] { border-color: var(--forest); background: var(--paper); }
+.refugio-select-trigger[aria-expanded=true] > .icon { transform: rotate(180deg); }
+.refugio-select-trigger[aria-invalid=true] { border: 2px solid var(--color-danger); }
+.refugio-select-trigger:disabled { cursor: not-allowed; opacity: .55; }
+.refugio-options { position: fixed; z-index: 160; overflow-y: auto; overscroll-behavior: contain; padding: 6px; border-radius: 16px; border: 1px solid var(--forest); background: var(--paper); color: var(--ink); box-shadow: var(--shadow); }
+.refugio-options [role=option] { position: relative; display: flex; align-items: center; min-height: 44px; margin-block: 2px; border: 1px solid transparent; border-radius: 10px; padding: 10px 30px 10px 12px; cursor: pointer; font-size: .875rem; }
+.refugio-options [role=option].is-active { background: var(--sage-light); border-color: var(--forest); color: var(--forest); }
+.refugio-options [role=option]:hover { background: var(--sage-light); }
+.refugio-options [aria-selected=true] { font-weight: 850; }
+.refugio-options [aria-selected=true]::after { content: ''; position: absolute; right: 12px; width: 7px; height: 7px; border-radius: 50%; background: var(--forest); }
+.refugio-options [aria-disabled=true] { color: var(--muted); cursor: not-allowed; opacity: .6; }
+.refugio-date-control { position: relative; min-width: 0; }
+.refugio-date-control input { min-height: 50px; padding-right: 60px !important; border-color: var(--color-control-border) !important; }
+.refugio-date-control input::-webkit-calendar-picker-indicator { display: none; }
+.refugio-date-control > button { position: absolute; right: 5px; top: 4px; width: 42px; height: 42px; background: var(--sage-light); color: var(--forest); border-radius: 10px; }
+.refugio-calendar { position: fixed; inset: 0; margin: auto; width: min(430px,calc(100% - 24px)); max-height: calc(100dvh - 24px); overflow: auto; padding: 22px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); color: var(--ink); box-shadow: var(--shadow); }
+.refugio-calendar::backdrop { background: var(--sidebar-overlay); backdrop-filter: blur(4px); }
+.calendar-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 20px; }
+.calendar-heading .micro-label { font-size: .6rem; letter-spacing: .1em; }
+.calendar-heading h2 { font: 600 1.5rem var(--font-heading); margin-top: 6px; }
+.calendar-heading > button { flex-shrink: 0; }
+.calendar-navigation { display: flex; align-items: center; gap: 2px; padding: 8px 0; }
+.calendar-navigation .icon-button { width: 35px; height: 38px; padding: 8px; }
+.calendar-navigation h3 { flex: 1; text-align: center; font: 800 .85rem var(--font-body); text-transform: capitalize; letter-spacing: 0; }
+.refugio-calendar table { table-layout: fixed; border-spacing: 2px; border-collapse: separate; }
+.refugio-calendar th { padding: 7px 0; border: 0; text-align: center; font-size: .7rem; }
+.refugio-calendar td { padding: 1px; border: 0; text-align: center; }
+.refugio-calendar td button { display: grid; place-items: center; width: 100%; min-height: 40px; border: 1px solid transparent; border-radius: 11px; background: transparent; color: var(--ink); font-size: .85rem; }
+.refugio-calendar td button:hover { background: var(--sage-light); border-color: var(--forest); }
+.refugio-calendar td button.selected { background: var(--forest); color: var(--paper); }
+.refugio-calendar td button[aria-current=date] { font-weight: 900; text-decoration: underline; text-underline-offset: 5px; }
+.refugio-calendar button:disabled { opacity: .3; cursor: not-allowed; }
+.refugio-calendar #refugio-calendar-help { color: var(--muted); font-size: .7rem; margin-block: 14px; }
+.calendar-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.calendar-actions .btn { min-height: 44px; padding: 11px 16px; font-size: .75rem; }
+.refugio-search { position: relative; }
+.refugio-search > .icon { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); width: 18px; height: 18px; color: var(--forest); pointer-events: none; }
+.refugio-search input { min-height: 50px; padding-inline: 44px !important; border-color: var(--color-control-border) !important; }
+.refugio-search input::-webkit-search-cancel-button { display: none; }
+.refugio-search .icon-button { position: absolute; top: 3px; right: 3px; color: var(--muted); }
+.btn-reset.filter-reset { border: 1px solid var(--line); background: var(--sage-light); color: var(--forest); text-decoration: none; gap: 8px; min-height: 50px; padding: 12px 16px; font-size: .75rem; }
+.btn-reset span { font: inherit; }
+.btn-reset .icon { width: 17px; height: 17px; transition: transform var(--duration-normal) var(--ease-standard); }
+.btn-reset:hover .icon { transform: rotate(-65deg); }
+@media (max-width: 640px) {
+    .catalogue-filter-actions:has(.btn-reset) { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .catalogue-filter-actions .btn { min-width: 0; padding-inline: 10px; white-space: normal; }
+    .refugio-calendar { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .btn-reset:hover .icon { transform: none; } }
+@media (forced-colors: active) { .refugio-options .is-active,.refugio-calendar td button.selected { outline: 2px solid CanvasText; } }
