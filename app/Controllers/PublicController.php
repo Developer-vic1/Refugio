@@ -10,7 +10,7 @@ final class PublicController {
     private function enabled():bool {return \env('PUBLIC_CONTENT_ENABLED','false') === 'true';}
     public function home():void { $animals=ContentVisibility::visible()?(new AnimalRepository())->catalog('', '',4):[];\page('public/home',['title'=>'Inicio','animals'=>$animals,'reviewMode'=>ContentVisibility::localReview()]); }
     public function about():void { \page('public/about',['title'=>'Nuestra historia empieza aquí']); }
-    public function adoptionInfo():void { \page('pages/text',['title'=>'Adopciones responsables','lead'=>'Conoce a los animales disponibles. Cada solicitud es evaluada por el refugio antes de formalizar la adopción.','link'=>'/animales','linkLabel'=>'Explorar animales']); }
+    public function adoptionInfo():void { \page('public/adoptions',['title'=>'Un hogar empieza con una decisión consciente']); }
     public function donationInfo():void { \page('pages/text',['title'=>'Cómo colaborar','lead'=>'Puedes conocer las campañas publicadas o proponer una donación material. Los aportes monetarios requieren confirmación administrativa.','link'=>'/campanas','linkLabel'=>'Ver campañas','secondLink'=>'/donaciones/materiales','secondLabel'=>'Ofrecer donación material']); }
     public function contact():void { \page('public/contact',['title'=>'Hablemos']); }
     public function privacy():void {\page('public/privacy',['title'=>'Tu información, con cuidado']);}
