@@ -1,0 +1,16 @@
+{
+  "name": "refugio-vida-animal-laragon",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Frontend Tailwind CSS v4 y recursos centralizados para aplicación MVC PHP",
+  "scripts": {
+    "assets:sync": "node scripts/sync-assets.mjs",
+    "css:build": "npx @tailwindcss/cli -i ./resources/css/tailwind-input.css -o ./public/assets/css/tailwind.css --minify",
+    "css:watch": "npx @tailwindcss/cli -i ./resources/css/tailwind-input.css -o ./public/assets/css/tailwind.css --watch",
+    "build": "npm run assets:sync && npm run css:build"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/cli": "^4.1.0"
+  }
+}

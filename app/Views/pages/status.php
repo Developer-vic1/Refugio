@@ -1,0 +1,1 @@
+<section class="wrap section"><div class="info-panel status-panel"><h1><?= e($title) ?></h1><p class="lead"><?= e($message) ?></p><a class="btn btn-primary" href="/">Ir al inicio →</a></div></section>

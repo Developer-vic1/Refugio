@@ -1,0 +1,9 @@
+<div class="admin-pagehead"><div><span class="micro-label">DISEÑO DEL SISTEMA</span><h1>Identidad visual</h1><p>Selecciona la paleta y el ritmo de movimiento de todo el sitio público y administrativo.</p></div><span class="admin-tag">Configuración centralizada</span></div>
+<form method="post" action="/admin/tema" class="admin-panel theme-form" data-theme-form><?= csrf_field() ?><h2>Paleta de colores</h2><p>Los tonos se definen exclusivamente en <code>resources/css/app.css</code>. Ninguna vista necesita colores propios.</p>
+<div class="themes-grid">
+<?php foreach([['bosque','Bosque y Hogar','Serena, cálida y protectora'],['arena','Atardecer Solidario','Emotiva, cercana y editorial'],['lila','Lila Esperanza','Creativa, amable y expresiva']] as $t): ?>
+<label class="theme-choice"><input type="radio" name="theme" value="<?= e($t[0]) ?>" <?= $settings['theme']===$t[0]?'checked':'' ?> data-theme-preview><span class="theme-swatch theme-<?= e($t[0]) ?>"><i></i><i></i><i></i><i></i></span><strong><?= e($t[1]) ?></strong><small><?= e($t[2]) ?></small></label>
+<?php endforeach ?></div>
+<h2>Intensidad de las animaciones</h2><div class="motion-options"><?php foreach([['serena','Serena','Transiciones delicadas y mínimas'],['equilibrada','Equilibrada','Animaciones armónicas y expresivas'],['expresiva','Expresiva','Desplazamientos y microinteracciones más notorios']] as $t): ?><label><input type="radio" name="motion" value="<?= e($t[0]) ?>" <?= $settings['motion']===$t[0]?'checked':'' ?>><span><b><?= e($t[1]) ?></b><small><?= e($t[2]) ?></small></span></label><?php endforeach ?></div>
+<div class="notice">Los visitantes que solicitan reducir el movimiento en su sistema operativo siempre tendrán prioridad sobre esta configuración.</div>
+<button class="btn btn-primary" type="submit">Guardar identidad visual ↗</button></form>
