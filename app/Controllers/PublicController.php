@@ -7,6 +7,8 @@ use App\Repositories\CampaignRepository;
 use App\Services\ContentVisibility;
 use App\Support\AnimalFilters;
 use App\Services\PublicInitiatives;
+use App\Services\PublicJournal;
+use App\Services\PublicCoordination;
 final class PublicController {
     private function enabled():bool {return \env('PUBLIC_CONTENT_ENABLED','false') === 'true';}
     public function home():void { $animals=ContentVisibility::visible()?(new AnimalRepository())->catalog('', '',4):[];\page('public/home',['title'=>'Inicio','animals'=>$animals,'reviewMode'=>ContentVisibility::localReview()]); }
@@ -46,9 +48,18 @@ final class PublicController {
         if(!$item){\page('pages/status',['title'=>'Campaña no disponible','message'=>'No hay una campaña pública para este enlace.'],404);return;}
         \page('public/campaign',['title'=>$item['titulo'],'item'=>$item]);
     }
-    public function stories():void {$items=$this->enabled()?(new ContentRepository())->stories():[];\page('public/stories',['title'=>'Historias','items'=>$items]);}
-    public function story(string $id):void {$item=$this->enabled()?(new ContentRepository())->story((int)$id):false;if(!$item){\page('pages/status',['title'=>'Historia no encontrada','message'=>'Esta historia no está publicada.'],404);return;}\page('pages/detail',['title'=>$item['titulo'],'item'=>$item]);}
-    public function volunteers():void {$items=$this->enabled()?(new ContentRepository())->activities():[];\page('public/volunteers',['title'=>'Voluntariado','items'=>$items]);}
+    public function stories():void {$items=$this->enabled()?(new ContentRepository())->stories():[];\page('public/stories',['title'=>'Historias que empiezan con cuidado','items'=>$items,'journal'=>PublicJournal::all()]);}
+    public function story(string $id):void {
+        if($entry=PublicJournal::find($id)){\page('public/editorial',['title'=>$entry['title'],'entry'=>$entry,'slug'=>$id]);return;}
+        $item=$this->enabled()&&ctype_digit($id)?(new ContentRepository())->story((int)$id):false;
+        if(!$item){\page('pages/status',['title'=>'Historia no encontrada','message'=>'Esta historia no está publicada.'],404);return;}
+        \page('pages/detail',['title'=>$item['titulo'],'item'=>$item]);
+    }
+    public function volunteers():void {
+        $items=$this->enabled()?(new ContentRepository())->activities():[];
+        $area=is_string($_GET['area']??null)?$_GET['area']:'';
+        \page('public/volunteers',['title'=>'Tu tiempo también puede cuidar','items'=>$items,'selectedArea'=>isset(PublicCoordination::ROLES[$area])?$area:'']);
+    }
     public function activity(string $id):void {$item=$this->enabled()?(new ContentRepository())->activity((int)$id):false;if(!$item){\page('pages/status',['title'=>'Actividad no disponible','message'=>'Esta actividad no admite nuevas postulaciones.'],404);return;}\page('public/activity',['title'=>$item['nombre'],'item'=>$item]);}
     public function transparency():void {$repo=new ContentRepository();$enabled=$this->enabled();\page('public/transparency',['title'=>'Transparencia','totals'=>$enabled?$repo->transparency():[],'reports'=>$enabled?$repo->reports():[]]);}
     public function report(string $id):void {$item=$this->enabled()?(new ContentRepository())->report((int)$id):false;if(!$item){\page('pages/status',['title'=>'Informe no disponible','message'=>'Este informe no está publicado.'],404);return;}\page('pages/detail',['title'=>$item['titulo'],'item'=>$item]);}
